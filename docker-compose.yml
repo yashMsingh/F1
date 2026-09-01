@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: f1_postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-f1_race_intelligence}
+      POSTGRES_USER: ${POSTGRES_USER:-f1user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - f1_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-f1user} -d ${POSTGRES_DB:-f1_race_intelligence}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  f1_pgdata:

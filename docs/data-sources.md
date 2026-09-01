@@ -49,12 +49,12 @@ Returns full finishing classification, championship points awarded, time deltas,
 | Field Path | Type | Description / Notes |
 | :--- | :--- | :--- |
 | `number` | string | Car competition number (e.g., `"1"`, `"4"`, `"44"`) |
-| `position` | string | Final classified finishing position (e.g., `"1"`) |
-| `positionText` | string | Position label: numeric string (`"1"`, `"2"`) or `"R"` for retired, `"D"` for disqualified, `"W"` for withdrawn |
+| `position` | string | Source result/classification order (e.g., `"1"`). May still be numeric for retired rows; preserve as source fact. |
+| `positionText` | string | Position label: numeric string (`"1"`, `"2"`) or non-numeric status code such as `"R"` for retired, `"D"` for disqualified, `"W"` for withdrawn |
 | `points` | string | Total championship points scored in the race (e.g., `"25"`, `"18"`, `"1"`) |
 | `grid` | string | Starting grid position (e.g., `"1"`, `"0"` for pit lane start) |
 | `laps` | string | Number of laps completed (e.g., `"58"`) |
-| `status` | string | Classification status (e.g., `"Finished"`, `"+1 Lap"`, `"Engine"`, `"Accident"`, `"Collision"`) |
+| `status` | string | Source classification status (e.g., `"Finished"`, `"Lapped"`, `"+1 Lap"`, `"Engine"`, `"Accident"`, `"Collision"`) |
 | `Driver.driverId` | string | Unique driver slug (e.g., `"max_verstappen"`, `"norris"`) |
 | `Driver.permanentNumber` | string | Driver career permanent number (e.g., `"33"`, `"4"`) |
 | `Driver.code` | string | 3-letter FIA driver abbreviation (e.g., `"VER"`, `"NOR"`) |
@@ -99,7 +99,7 @@ Returns individual pit stop events recorded during the Grand Prix.
 | `lap` | string | Lap number during which the driver entered the pit lane |
 | `stop` | string | Sequential pit stop index for that driver (`"1"`, `"2"`, `"3"`) |
 | `time` | string | UTC / Local time of day when pit stop commenced (e.g., `"15:22:58"`) |
-| `duration` | string | Total pit lane transit and stationary duration in seconds (e.g., `"21.341"`) |
+| `duration` | string | Total pit lane transit and stationary duration. Usually seconds (e.g., `"21.341"`), but can be minute-based during unusual/red-flag cases (e.g., `"40:55.302"`). |
 
 > [!NOTE]
 > **Pagination Required**: Normal race weekends produce 30 to 90 pit stop entries (e.g., 82 total entries for 2025 Round 1). Ingestion must page using `limit=100` or loop with `offset` increments.
@@ -163,10 +163,13 @@ Returns finishing classifications for Saturday Sprint races.
 
 1. **Strict Field Typing**: All numbers are serialized as strings.
 2. **Special Status Strings**: `positionText` contains non-integer values (`"R"` for retired, `"D"` for disqualified).
+   - Do not derive analytical classification from a single field. Preserve `position`, `positionText`, `status`, and `laps`, then derive normalized categories downstream.
+   - Modern payloads can use `status = "Lapped"` for classified lapped finishers; other representations may use `+N Lap(s)`.
 3. **Sparse Properties**:
    - `Q2` / `Q3` attributes do not exist on drivers eliminated in earlier rounds.
    - `FastestLap` is absent for drivers who retired on Lap 0 or did not record a valid flying lap.
    - `Time.millis` is often only present on P1 (winner); subsequent finishers provide `Time.time` as gap deltas (e.g., `"+5.123"`).
+   - Pit stop `duration` is not guaranteed to be a simple `SS.sss` value; parsers must handle minute-based values.
 4. **Missing Data Dimensions**:
    - No tyre compound or tyre stint degradation records.
    - No track or atmospheric weather metrics.

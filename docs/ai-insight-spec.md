@@ -72,7 +72,8 @@ Before an LLM API call is made, the Python engine serializes an `EvidencePackage
   },
   "observed_facts": [
     {"key": "grid_position", "value": 1, "unit": "position"},
-    {"key": "finishing_position", "value": 9, "unit": "position"},
+    {"key": "source_position", "value": 9, "unit": "position"},
+    {"key": "classification_status", "value": "CLASSIFIED_FINISHER", "unit": "category"},
     {"key": "laps_completed", "value": 57, "unit": "laps"},
     {"key": "status", "value": "Finished", "unit": "status"}
   ],
@@ -95,7 +96,7 @@ Before an LLM API call is made, the Python engine serializes an `EvidencePackage
   ],
   "contextual_benchmarks": {
     "teammate_id": "piastri",
-    "teammate_finishing_position": 2,
+    "teammate_source_position": 2,
     "teammate_grid_position": 2,
     "winner_driver_id": "max_verstappen"
   },
@@ -169,7 +170,7 @@ The output returned by the LLM is parsed and validated against this JSON schema:
 
 | Insight Type | Trigger Condition | Primary Metrics | Severity |
 |--------------|-------------------|-----------------|----------|
-| `UNEXPECTED_UNDERPERFORMANCE` | `finishing_position > season_avg + 2.0*std` | Grid, Finish, Z-Score | HIGH |
+| `UNEXPECTED_UNDERPERFORMANCE` | Eligible `source_position > season_avg + 2.0*std` | Grid, Source Position, Classification Status, Z-Score | HIGH |
 | `SIGNIFICANT_IMPROVEMENT` | `5_race_rolling_avg` improved by > 3.0 positions | Rolling Avg, Finish | MEDIUM |
 | `CONSTRUCTOR_PERFORMANCE_SHIFT` | Team avg points change > 50% between 4-race blocks | Team Points, Quali Pace | HIGH |
 | `TEAMMATE_DIVERGENCE` | Teammate gap > 3x points or > 5 positions over 3 races | H2H Delta, Points Share | MEDIUM |

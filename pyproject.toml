@@ -1,0 +1,23 @@
+[project]
+name = "f1-race-intelligence"
+version = "0.1.0"
+description = "AI-powered Formula 1 Race Analytics and Intelligence Platform"
+requires-python = ">=3.10"
+dependencies = [
+    "sqlalchemy>=2.0,<3.0",
+    "psycopg2-binary>=2.9,<3.0",
+    "alembic>=1.13,<2.0",
+    "python-dotenv>=1.0,<2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0,<9.0",
+    "pytest-asyncio>=0.23,<1.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]

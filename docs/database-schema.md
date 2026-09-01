@@ -210,16 +210,17 @@ CREATE TABLE race_results (
     constructor_id INTEGER NOT NULL REFERENCES constructors(id),
     car_number INTEGER,
     grid_position INTEGER,                      -- Starting grid (can be NULL for DNS or pit lane starts)
-    finishing_position INTEGER,                  -- NULL for DNF/DNS/DSQ
-    position_text VARCHAR(10) NOT NULL,         -- '1', '2', 'R', 'D', 'E', 'W', 'F', 'N'
+    source_position INTEGER,                     -- Jolpica `position`; preserve even for retired rows
+    position_text VARCHAR(10) NOT NULL,          -- '1', '2', 'R', 'D', 'E', 'W', 'F', 'N'
     points DECIMAL(5,2) NOT NULL DEFAULT 0,
     laps_completed INTEGER NOT NULL DEFAULT 0,
-    status VARCHAR(100) NOT NULL,               -- 'Finished', 'Retired', '+1 Lap', etc.
+    status VARCHAR(100) NOT NULL,               -- 'Finished', 'Lapped', '+1 Lap', 'Retired', etc.
     time_millis BIGINT,                          -- Finish time in milliseconds (winner: absolute; others: NULL or gap)
     time_text VARCHAR(50),                       -- '+0.895' or '1:42:06.304'
     fastest_lap_rank INTEGER,                    -- Rank among all fastest laps
     fastest_lap_number INTEGER,                  -- Which lap was fastest
-    fastest_lap_time VARCHAR(20),                -- '1:22.167'
+    fastest_lap_time VARCHAR(20),                -- raw '1:22.167'
+    fastest_lap_time_millis INTEGER,             -- parsed fastest lap duration
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE(race_id, driver_id)
 );
@@ -236,16 +237,17 @@ CREATE INDEX idx_race_results_constructor ON race_results(constructor_id);
 | `constructor_id` | `INTEGER` | `NOT NULL`, `REFERENCES constructors(id)` | Foreign key to constructor |
 | `car_number` | `INTEGER` | | Car number entered for the event |
 | `grid_position` | `INTEGER` | | Starting grid slot (NULL for pit lane start or DNS) |
-| `finishing_position`| `INTEGER` | | Numeric finish position (NULL for DNF/DNS/DSQ) |
+| `source_position`| `INTEGER` | | Numeric Jolpica `position` / source classification order. Preserve even for retired rows; NULL only when source position is absent. |
 | `position_text` | `VARCHAR(10)` | `NOT NULL` | Raw API status code (`'1'`, `'2'`, `'R'`, `'D'`, `'W'`, etc.) |
 | `points` | `DECIMAL(5,2)`| `NOT NULL`, `DEFAULT 0` | Championship points awarded |
 | `laps_completed` | `INTEGER` | `NOT NULL`, `DEFAULT 0` | Total laps completed |
-| `status` | `VARCHAR(100)`| `NOT NULL` | Classification status (e.g., `'Finished'`, `'Engine'`, `'+1 Lap'`) |
+| `status` | `VARCHAR(100)`| `NOT NULL` | Source classification status (e.g., `'Finished'`, `'Lapped'`, `'+1 Lap'`, `'Engine'`) |
 | `time_millis` | `BIGINT` | | Total race duration in ms (winner) or gap |
 | `time_text` | `VARCHAR(50)` | | Formatted race time string |
 | `fastest_lap_rank` | `INTEGER` | | Rank of driver's fastest lap in race (1 = fastest lap) |
 | `fastest_lap_number`| `INTEGER` | | Lap on which fastest lap was set |
-| `fastest_lap_time` | `VARCHAR(20)`| | Fastest lap time string (e.g., `'1:22.167'`) |
+| `fastest_lap_time` | `VARCHAR(20)`| | Raw fastest lap time string (e.g., `'1:22.167'`) |
+| `fastest_lap_time_millis` | `INTEGER`| | Parsed fastest lap time in milliseconds |
 | `created_at` | `TIMESTAMP` | `DEFAULT CURRENT_TIMESTAMP` | Row creation timestamp |
 
 ---
@@ -262,9 +264,12 @@ CREATE TABLE qualifying_results (
     constructor_id INTEGER NOT NULL REFERENCES constructors(id),
     car_number INTEGER,
     position INTEGER NOT NULL,
-    q1_time VARCHAR(20),                        -- '1:15.912' (NULL if no time set)
-    q2_time VARCHAR(20),                        -- NULL if eliminated in Q1
-    q3_time VARCHAR(20),                        -- NULL if eliminated in Q1 or Q2
+    q1_time VARCHAR(20),                        -- raw '1:15.912' (NULL if no time set)
+    q1_time_millis INTEGER,
+    q2_time VARCHAR(20),                        -- raw, NULL if eliminated in Q1
+    q2_time_millis INTEGER,
+    q3_time VARCHAR(20),                        -- raw, NULL if eliminated in Q1 or Q2
+    q3_time_millis INTEGER,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE(race_id, driver_id)
 );
@@ -281,8 +286,11 @@ CREATE INDEX idx_qualifying_driver ON qualifying_results(driver_id);
 | `car_number` | `INTEGER` | | Car number |
 | `position` | `INTEGER` | `NOT NULL` | Final qualifying position |
 | `q1_time` | `VARCHAR(20)` | | Fastest lap time in Q1 session (NULL if no time set) |
+| `q1_time_millis` | `INTEGER` | | Parsed Q1 lap time in milliseconds |
 | `q2_time` | `VARCHAR(20)` | | Fastest lap time in Q2 session (NULL if eliminated in Q1) |
+| `q2_time_millis` | `INTEGER` | | Parsed Q2 lap time in milliseconds |
 | `q3_time` | `VARCHAR(20)` | | Fastest lap time in Q3 session (NULL if eliminated before Q3) |
+| `q3_time_millis` | `INTEGER` | | Parsed Q3 lap time in milliseconds |
 | `created_at` | `TIMESTAMP` | `DEFAULT CURRENT_TIMESTAMP` | Row creation timestamp |
 
 ---
@@ -299,7 +307,7 @@ CREATE TABLE sprint_results (
     constructor_id INTEGER NOT NULL REFERENCES constructors(id),
     car_number INTEGER,
     grid_position INTEGER,
-    finishing_position INTEGER,
+    source_position INTEGER,
     position_text VARCHAR(10) NOT NULL,
     points DECIMAL(5,2) NOT NULL DEFAULT 0,
     laps_completed INTEGER NOT NULL DEFAULT 0,
@@ -309,6 +317,7 @@ CREATE TABLE sprint_results (
     fastest_lap_rank INTEGER,
     fastest_lap_number INTEGER,
     fastest_lap_time VARCHAR(20),
+    fastest_lap_time_millis INTEGER,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE(race_id, driver_id)
 );
@@ -323,7 +332,7 @@ CREATE INDEX idx_sprint_race ON sprint_results(race_id);
 | `constructor_id` | `INTEGER` | `NOT NULL`, `REFERENCES constructors(id)` | Foreign key to constructor |
 | `car_number` | `INTEGER` | | Car number |
 | `grid_position` | `INTEGER` | | Starting grid position |
-| `finishing_position`| `INTEGER` | | Finishing position (NULL for DNF/DNS/DSQ) |
+| `source_position`| `INTEGER` | | Numeric Jolpica `position` / source classification order. Preserve even for retired rows; NULL only when source position is absent. |
 | `position_text` | `VARCHAR(10)` | `NOT NULL` | Classification status code |
 | `points` | `DECIMAL(5,2)`| `NOT NULL`, `DEFAULT 0` | Sprint championship points |
 | `laps_completed` | `INTEGER` | `NOT NULL`, `DEFAULT 0` | Laps completed in sprint |
@@ -348,8 +357,9 @@ CREATE TABLE pit_stops (
     driver_id INTEGER NOT NULL REFERENCES drivers(id),
     stop_number INTEGER NOT NULL,               -- 1, 2, 3...
     lap INTEGER NOT NULL,
-    time_of_day VARCHAR(20),                    -- '15:22:58' (local time)
-    duration_seconds DECIMAL(10,3),             -- 13.341 (parsed from string)
+    time_of_day VARCHAR(20),                    -- raw '15:22:58' time-of-day
+    duration_text VARCHAR(20),                  -- raw duration, e.g. '20.647' or '40:55.302'
+    duration_millis BIGINT,                     -- parsed duration in milliseconds
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE(race_id, driver_id, stop_number)
 );
@@ -364,8 +374,9 @@ CREATE INDEX idx_pit_stops_driver ON pit_stops(driver_id);
 | `driver_id` | `INTEGER` | `NOT NULL`, `REFERENCES drivers(id)` | Foreign key to driver |
 | `stop_number` | `INTEGER` | `NOT NULL` | Stop sequence for this driver in this race (1, 2, ...) |
 | `lap` | `INTEGER` | `NOT NULL` | Race lap on which the pit stop occurred |
-| `time_of_day` | `VARCHAR(20)` | | Local time of day when pit stop was made (e.g., `'15:22:58'`) |
-| `duration_seconds` | `DECIMAL(10,3)` | | Total pit lane time in seconds (parsed from string) |
+| `time_of_day` | `VARCHAR(20)` | | Raw time of day when pit stop was made (e.g., `'15:22:58'`) |
+| `duration_text` | `VARCHAR(20)` | | Raw source duration string; may be seconds (`'20.647'`) or minute-based (`'40:55.302'`) |
+| `duration_millis` | `BIGINT` | | Parsed total pit-lane duration in milliseconds |
 | `created_at` | `TIMESTAMP` | `DEFAULT CURRENT_TIMESTAMP` | Row creation timestamp |
 
 ---
@@ -487,6 +498,8 @@ CREATE TABLE etl_log (
     id SERIAL PRIMARY KEY,
     source VARCHAR(50) NOT NULL,                -- 'jolpica', 'fastf1'
     entity_type VARCHAR(50) NOT NULL,           -- 'race_results', 'qualifying', etc.
+    endpoint VARCHAR(255),                      -- '/2024/5/results.json'
+    source_url TEXT,                            -- exact retrieved URL when available
     season_year INTEGER,
     round INTEGER,
     status VARCHAR(20) NOT NULL,                -- 'success', 'partial', 'failed'
@@ -506,6 +519,8 @@ CREATE TABLE etl_log (
 | `id` | `SERIAL` | `PRIMARY KEY` | Surrogate integer identifier |
 | `source` | `VARCHAR(50)` | `NOT NULL` | Data provider (e.g., `'jolpica'`, `'fastf1'`) |
 | `entity_type` | `VARCHAR(50)` | `NOT NULL` | Target entity (e.g., `'race_results'`, `'lap_times'`) |
+| `endpoint` | `VARCHAR(255)` | | Source endpoint path |
+| `source_url` | `TEXT` | | Exact request URL when available |
 | `season_year` | `INTEGER` | | Target season year |
 | `round` | `INTEGER` | | Target round number |
 | `status` | `VARCHAR(20)` | `NOT NULL` | Pipeline status (`'success'`, `'partial'`, `'failed'`) |
@@ -526,7 +541,7 @@ CREATE TABLE etl_log (
 
 2. **Lap times stored as both string and parsed milliseconds**: The API returns times as formatted strings like `'1:22.167'`. We store both the original string (for fidelity and direct rendering) and parsed integer milliseconds (`time_millis`, for computation, pace deltas, and statistical aggregation). Parsing occurs during ETL ingestion.
 
-3. **position vs position_text**: `finishing_position` is typed as `INTEGER` (set to `NULL` for non-finishers) to enable numerical sorting and aggregations. `position_text` stores the exact raw API classification (`'R'` for retired, `'D'` for disqualified, `'E'` for excluded, `'W'` for withdrawn, `'F'` for failed to qualify, `'N'` for not classified) for complete fidelity.
+3. **source_position vs position_text vs analytical classification**: `source_position` stores Jolpica `position` exactly as a parsed integer, including retired rows when the source provides a numeric classification order. `position_text` stores the exact raw API classification (`'R'` for retired, `'D'` for disqualified, `'E'` for excluded, `'W'` for withdrawn, `'F'` for failed to qualify, `'N'` for not classified). Metrics must derive eligibility through analytical classification logic rather than nulling source positions.
 
 4. **Nullable grid_position**: Pit lane starts, DNS (Did Not Start), and certain historical Grand Prix events do not have recorded starting grid slots.
 

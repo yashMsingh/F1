@@ -60,11 +60,11 @@ This document defines the meaning, source, type, and edge cases of every key dat
 |-------|-----------|------|--------|-------------|------------|
 | Car Number | `car_number` | INTEGER | Jolpica `number` | Car number used in race | Returned as string; parse to int |
 | Grid Position | `grid_position` | INTEGER | Jolpica `grid` | Starting position | NULL or `0` for pit-lane starts, DNS |
-| Finishing Position | `finishing_position` | INTEGER | Jolpica `position` | Classified finishing order | Not always meaningful for retired drivers |
+| Source Position | `source_position` | INTEGER | Jolpica `position` | Source-provided result/classification order | Preserve exactly when present, including retired rows; NULL means source position missing, not automatically DNF |
 | Position Text | `position_text` | VARCHAR(10) | Jolpica `positionText` | API-provided position string | `"R"` = Retired, `"D"` = Disqualified, `"E"` = Excluded, `"W"` = Withdrawn, `"F"` = Failed to qualify, `"N"` = Not classified |
 | Points | `points` | DECIMAL(5,2) | Jolpica `points` | Points awarded | Returned as string; can be `0.0` for non-scorers; half-points possible (2021 Belgium) |
 | Laps Completed | `laps_completed` | INTEGER | Jolpica `laps` | Number of laps completed | `0` for DNS or immediate retirement |
-| Status | `status` | VARCHAR(100) | Jolpica `status` | Race outcome | `"Finished"`, `"Retired"`, `"+1 Lap"`, `"+2 Laps"`, `"Collision"`, `"Engine"`, etc. |
+| Status | `status` | VARCHAR(100) | Jolpica `status` | Source race outcome/status text | `"Finished"`, `"Lapped"`, `"+1 Lap"`, `"+2 Laps"`, `"Retired"`, `"Collision"`, `"Engine"`, etc. |
 | Finish Time (ms) | `time_millis` | BIGINT | Jolpica `Time.millis` | Finish time in milliseconds | Winner: absolute race time; Others: may be gap or NULL |
 | Finish Time (text) | `time_text` | VARCHAR(50) | Jolpica `Time.time` | Formatted time string | Winner: `"1:42:06.304"`; Others: `"+0.895"` |
 | Fastest Lap Rank | `fastest_lap_rank` | INTEGER | Jolpica `FastestLap.rank` | Ranking of fastest lap among all drivers | NULL if no fastest lap recorded (e.g., DNS, lap-0 retirement) |
@@ -76,9 +76,9 @@ This document defines the meaning, source, type, and edge cases of every key dat
 | Field | DB Column | Type | Source | Description | Edge Cases |
 |-------|-----------|------|--------|-------------|------------|
 | Position | `position` | INTEGER | Jolpica `position` | Qualifying position | — |
-| Q1 Time | `q1_time` | VARCHAR(20) | Jolpica `Q1` | Q1 lap time | Empty string `""` if no time set (e.g., 107% rule, mechanical issue) |
-| Q2 Time | `q2_time` | VARCHAR(20) | Jolpica `Q2` | Q2 lap time | NULL if driver eliminated in Q1 |
-| Q3 Time | `q3_time` | VARCHAR(20) | Jolpica `Q3` | Q3 lap time | NULL if eliminated before Q3 |
+| Q1 Time | `q1_time` / `q1_time_millis` | VARCHAR(20) / INTEGER | Jolpica `Q1` | Raw Q1 lap time and parsed milliseconds | Empty string or absent if no time set; parsed value NULL |
+| Q2 Time | `q2_time` / `q2_time_millis` | VARCHAR(20) / INTEGER | Jolpica `Q2` | Raw Q2 lap time and parsed milliseconds | NULL if eliminated in Q1 |
+| Q3 Time | `q3_time` / `q3_time_millis` | VARCHAR(20) / INTEGER | Jolpica `Q3` | Raw Q3 lap time and parsed milliseconds | NULL if eliminated before Q3 |
 
 ### Pit Stop Fields
 
@@ -87,7 +87,7 @@ This document defines the meaning, source, type, and edge cases of every key dat
 | Stop Number | `stop_number` | INTEGER | Jolpica `stop` | Sequential stop number for this driver | Starts at 1 |
 | Lap | `lap` | INTEGER | Jolpica `lap` | Lap on which pit stop occurred | — |
 | Time of Day | `time_of_day` | VARCHAR(20) | Jolpica `time` | Time of day (local) | Format: `"HH:MM:SS"` |
-| Duration | `duration_seconds` | DECIMAL(10,3) | Jolpica `duration` | Total pit stop duration in seconds | Includes pit-lane time; returned as string (e.g., `"13.341"`); RED FLAG pit stops will have anomalously long durations |
+| Duration | `duration_text` / `duration_millis` | VARCHAR(20) / BIGINT | Jolpica `duration` | Raw pit-stop duration and parsed milliseconds | Includes pit-lane time; may be seconds (`"20.647"`) or minute-based (`"40:55.302"`); long values must be preserved |
 
 ### Lap Time Fields
 
@@ -114,14 +114,15 @@ These fields do NOT exist in the source API. They are computed by the analytics 
 
 | Metric | Formula | Dependencies | Edge Cases | Notes |
 |--------|---------|-------------|------------|-------|
-| Positions Gained/Lost | `grid_position - finishing_position` | `grid_position`, `finishing_position` | Both must be non-NULL and > 0; exclude DNS, DNF, DSQ; pit-lane starts (grid=0 or NULL) must be handled separately | Positive = positions gained; Negative = positions lost |
-| DNF Flag | `status NOT IN ('Finished', '+1 Lap', '+2 Laps', ...)` | `status` | Need to enumerate all valid "classified" statuses; lapped drivers are classified, not DNF | Boolean derived field |
+| Positions Gained/Lost | `grid_position - source_position` for eligible classified results | `grid_position`, `source_position`, derived `classification_status` | Both positions must be non-NULL and grid > 0; exclude DNS, DNF, DSQ, withdrawn, unknown, and pit-lane starts by default | Positive = positions gained; Negative = positions lost |
+| Classification Status | Derived enum | `position_text`, `status`, `laps_completed`, race distance | Values: `CLASSIFIED_FINISHER`, `LAPPED_FINISHER`, `RETIRED_DNF`, `DNS`, `DSQ`, `WITHDRAWN`, `MISSING_RESULT`, `UNKNOWN_STATUS` | Analytical field; not directly provided by Jolpica |
+| DNF Flag | `classification_status = 'RETIRED_DNF'` | Derived classification | Do not classify `Lapped`, `+1 Lap`, or `+2 Laps` as DNF | Boolean derived field |
 | Points Per Race | `total_points / races_started` | Aggregated from race_results | Define "races started" (exclude DNS? include DNF?) | Must document denominator |
-| Average Finishing Position | `AVG(finishing_position)` | `finishing_position` | Exclude NULL (DNF/DNS/DSQ); state this clearly | Can be misleading if many DNFs |
+| Average Finishing Position | `AVG(source_position)` over eligible classified results | `source_position`, derived `classification_status` | Include classified and lapped finishers; exclude DNF/DNS/DSQ/withdrawn/unknown by default | Can be misleading if many DNFs |
 | Average Qualifying Position | `AVG(position)` | qualifying_results.`position` | Some historical races may lack qualifying data | — |
 | DNF Rate | `COUNT(DNFs) / COUNT(races_started)` | Derived from `status` | Define what constitutes DNF vs classified finish | Percentage |
 | Teammate Delta | Driver's metric minus teammate's metric for same race/constructor | Multiple fields | Mid-season driver swaps; shared constructors | Requires identifying teammates per race |
-| Pit Stop Efficiency | `duration_seconds` relative to season/race average | `duration_seconds` | Exclude red-flag stops; anomalous durations | Z-score or percentile |
+| Pit Stop Efficiency | `duration_millis` relative to season/race average | `duration_millis`, derived outlier/context flags | Preserve all raw durations; filter only in metric-specific analysis with documented denominator | Z-score or percentile |
 
 ---
 
@@ -140,8 +141,10 @@ The Jolpica API returns all times as strings. The ETL must parse them consistent
 - `millis` field (BIGINT) is the canonical numeric value when available
 
 ### Pit Stop Duration
-- Pattern: `"SS.sss"` (e.g., `"13.341"`)
-- Parse directly to DECIMAL
+- Patterns: `"SS.sss"` (e.g., `"20.647"`) and minute-based values such as `"40:55.302"`
+- Store raw value in `duration_text`
+- Parse to integer milliseconds in `duration_millis`
+- Long values are not discarded; outlier or red-flag-candidate handling belongs in analytics
 
 ### Qualifying Times
 - Same format as lap times: `"M:SS.sss"`
@@ -156,6 +159,7 @@ From verified API responses, the following `status` values have been observed:
 | Status | Meaning | Classified? |
 |--------|---------|------------|
 | `Finished` | Completed all laps | Yes |
+| `Lapped` | Classified lapped finisher | Yes |
 | `+1 Lap` | Finished 1 lap behind leader | Yes |
 | `+2 Laps` | Finished 2 laps behind leader | Yes |
 | `Retired` | Did not finish (generic) | No |
@@ -184,4 +188,4 @@ From verified API responses, the following `status` values have been observed:
 | Empty Q1 time for some drivers | Cannot compute qualifying lap times | Store as NULL; note in analytics |
 | Sprint qualifying data unverified | Uncertain field structure | Test endpoint before ingesting |
 | Variable historical data quality | Older seasons may have fewer fields | Validate per-season; document gaps |
-| `positionText` not standardized | Different codes for different retirement reasons | Map to canonical categories in ETL |
+| `positionText` / `status` not standardized | Different codes and textual representations, including `Lapped` and `+N Lap(s)` | Preserve raw values and derive canonical analytical categories in views/code |

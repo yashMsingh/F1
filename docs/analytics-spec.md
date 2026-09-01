@@ -16,11 +16,11 @@ This document defines every analytical metric used by the platform. Each metric 
 | Property | Value |
 |----------|-------|
 | **Name** | Average Finishing Position |
-| **Definition** | Mean finishing position across classified race finishes |
-| **Formula** | `SUM(finishing_position) / COUNT(classified_finishes)` |
-| **Source Fields** | `race_results.finishing_position`, `race_results.status` |
+| **Definition** | Mean source result position across analytically classified race finishes |
+| **Formula** | `SUM(source_position) / COUNT(classified_finishes)` |
+| **Source Fields** | `race_results.source_position`, `race_results.position_text`, `race_results.status`, derived `classification_status` |
 | **Scope** | Per driver, per season or career |
-| **Edge Cases** | Exclude DNF, DNS, DSQ (where `finishing_position` IS NULL or status indicates non-classification). Include lapped finishers ("+1 Lap", "+2 Laps") as classified. |
+| **Edge Cases** | Include `CLASSIFIED_FINISHER` and `LAPPED_FINISHER`. Exclude DNF, DNS, DSQ, withdrawn, missing result, and unknown status. Do not infer DNF from `source_position IS NULL` alone; Jolpica can provide numeric positions for retired rows. |
 | **Example** | Norris finishes P1, P3, P2, DNF, P4 → avg = (1+3+2+4)/4 = 2.5 |
 | **Interpretation** | Lower is better. Compare within era (field size = 20 drivers consistently in modern F1). |
 
@@ -42,11 +42,11 @@ This document defines every analytical metric used by the platform. Each metric 
 | Property | Value |
 |----------|-------|
 | **Name** | Positions Gained/Lost |
-| **Definition** | Difference between starting grid position and finishing position |
-| **Formula** | `grid_position - finishing_position` |
-| **Source Fields** | `race_results.grid_position`, `race_results.finishing_position` |
+| **Definition** | Difference between starting grid position and source result position for eligible classified results |
+| **Formula** | `grid_position - source_position` |
+| **Source Fields** | `race_results.grid_position`, `race_results.source_position`, derived `classification_status` |
 | **Scope** | Per driver per race |
-| **Edge Cases** | **Both must be non-NULL and > 0**. Exclude: DNS (grid but no finish), DNF (may have NULL finishing_position), DSQ, pit-lane starts (grid=0). If `grid_position = 0`, treat as NULL/excluded. |
+| **Edge Cases** | `grid_position` and `source_position` must be non-NULL, with `grid_position > 0`. Include classified and lapped finishers. Exclude DNS, DNF, DSQ, withdrawn, missing result, unknown status, and pit-lane starts (`grid = 0`) by default. |
 | **Example** | Grid P16, Finish P4 → gained 12 positions. Grid P1, Finish P9 → lost 8 positions. |
 | **Interpretation** | Positive = gained positions (good race pace / start). Negative = lost positions. Zero = maintained position. |
 
@@ -58,7 +58,7 @@ This document defines every analytical metric used by the platform. Each metric 
 | **Definition** | Proportion of race entries that did not finish |
 | **Formula** | `COUNT(dnf_races) / COUNT(races_entered)` |
 | **Source Fields** | `race_results.status` |
-| **Classification** | A race is a "DNF" if `status` is NOT one of: `'Finished'`, or matches pattern `'+N Lap(s)'`. All other statuses (Retired, Collision, Engine, Gearbox, etc.) count as DNF. Disqualified counts as DNF for this metric. |
+| **Classification** | A race is a DNF when derived `classification_status = 'RETIRED_DNF'`. Classified lapped statuses such as `'Lapped'`, `'+1 Lap'`, and `'+2 Laps'` are not DNFs. DSQ should be reported separately or included only in an explicitly documented DNF+DSQ variant. |
 | **Scope** | Per driver, per season or career |
 | **Edge Cases** | DNS (did not start) should be excluded from both numerator and denominator — the driver did not "race". |
 | **Example** | 20 races entered, 3 DNFs → rate = 0.15 (15%) |
@@ -83,8 +83,8 @@ This document defines every analytical metric used by the platform. Each metric 
 |----------|-------|
 | **Name** | Win Rate |
 | **Definition** | Proportion of race entries resulting in a win |
-| **Formula** | `COUNT(finishing_position = 1) / COUNT(races_entered)` |
-| **Source Fields** | `race_results.finishing_position` |
+| **Formula** | `COUNT(source_position = 1 AND eligible classified race result) / COUNT(races_started)` |
+| **Source Fields** | `race_results.source_position`, derived `classification_status` |
 | **Scope** | Per driver, per season or career |
 | **Edge Cases** | DNS excluded from denominator. |
 | **Example** | 7 wins in 24 races → 29.2% |
@@ -96,8 +96,8 @@ This document defines every analytical metric used by the platform. Each metric 
 |----------|-------|
 | **Name** | Podium Rate |
 | **Definition** | Proportion of race entries resulting in a top-3 finish |
-| **Formula** | `COUNT(finishing_position <= 3) / COUNT(races_entered)` |
-| **Source Fields** | `race_results.finishing_position` |
+| **Formula** | `COUNT(source_position <= 3 AND eligible classified race result) / COUNT(races_started)` |
+| **Source Fields** | `race_results.source_position`, derived `classification_status` |
 | **Scope** | Per driver, per season or career |
 | **Edge Cases** | Same as Win Rate. |
 | **Example** | 18 podiums in 24 races → 75% |
@@ -109,8 +109,8 @@ This document defines every analytical metric used by the platform. Each metric 
 |----------|-------|
 | **Name** | Qualifying-to-Race Delta |
 | **Definition** | Average positions gained or lost from qualifying position to finishing position |
-| **Formula** | `AVG(qualifying_position - finishing_position)` over classified races |
-| **Source Fields** | `qualifying_results.position`, `race_results.finishing_position` |
+| **Formula** | `AVG(qualifying_position - source_position)` over eligible classified races |
+| **Source Fields** | `qualifying_results.position`, `race_results.source_position`, derived `classification_status` |
 | **Scope** | Per driver, per season |
 | **Edge Cases** | Only include races where both qualifying position and classified finishing position exist. Grid penalties may cause grid ≠ qualifying; this metric uses QUALIFYING position (pure pace) not grid. |
 | **Example** | Qualifies P5, finishes P2 → delta = +3 (gained). Avg over season measures "race craft". |
@@ -129,7 +129,7 @@ This document defines every analytical metric used by the platform. Each metric 
 | **Example** | Norris beats Piastri in qualifying 14/24 races → 58.3% |
 | **Interpretation** | >50% = generally faster in qualifying than teammate. |
 
-**Variant**: Teammate Race Head-to-Head — same logic but using `finishing_position`. Only count races where both teammates are classified.
+**Variant**: Teammate Race Head-to-Head — same logic but using `source_position` only where both teammates are classified or lapped classified finishers.
 
 ---
 
@@ -186,9 +186,9 @@ This document defines every analytical metric used by the platform. Each metric 
 |----------|-------|
 | **Name** | Pit Stop Duration |
 | **Definition** | Total time spent in pit lane per stop |
-| **Formula** | Direct from `pit_stops.duration_seconds` |
-| **Source Fields** | `pit_stops.duration_seconds` |
-| **Edge Cases** | Red-flag pit stops have anomalously long durations — **must be filtered or flagged**. Duration includes pit-lane speed limit time, not just stationary time. Some very old seasons may lack pit-stop data. |
+| **Formula** | Direct from `pit_stops.duration_millis`; expose seconds as `duration_millis / 1000.0` when needed |
+| **Source Fields** | `pit_stops.duration_text`, `pit_stops.duration_millis` |
+| **Edge Cases** | Red-flag or unusual stops can produce minute-based durations such as `40:55.302`. Preserve raw values. Do not blindly filter all stops above 60 seconds; use outlier flags or metric-specific filtering with a documented denominator. Some seasons lack pit-stop data. |
 
 ### 3.2 Number of Pit Stops Per Race
 
