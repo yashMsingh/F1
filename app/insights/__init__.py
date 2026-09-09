@@ -1,0 +1,101 @@
+"""Deterministic Rule-Based Insight Engine.
+
+Converts structured statistical evidence into explainable, machine-readable F1 insights.
+Strictly deterministic, traceable, and rule-based. Zero LLM / AI dependencies.
+"""
+
+from app.insights.engine import InsightEngine
+from app.insights.evaluators.pit_stops import (
+    evaluate_fast_pit_stop,
+    evaluate_pit_stop_variability,
+)
+from app.insights.evaluators.position_change import (
+    evaluate_multi_race_position_change,
+    evaluate_single_driver_position_change,
+)
+from app.insights.evaluators.qualifying import (
+    evaluate_qualifying_teammate_insight,
+)
+from app.insights.evaluators.race_pace import (
+    evaluate_fastest_recorded_lap,
+    evaluate_teammate_race_pace,
+)
+from app.insights.evaluators.teammate import (
+    evaluate_teammate_comparison,
+)
+from app.insights.rules import (
+    FAST_PIT_STOP_THRESHOLD_MILLIS,
+    LARGE_POSITION_GAIN_THRESHOLD,
+    PIT_STOP_HIGH_VARIABILITY_THRESHOLD_MILLIS,
+    RULE_FAST_PIT_STOP,
+    RULE_FASTEST_RECORDED_LAP,
+    RULE_LARGE_POSITION_GAIN,
+    RULE_PIT_STOP_HIGH_VARIABILITY,
+    RULE_POSITION_GAIN,
+    RULE_POSITION_LOSS,
+    RULE_POSITION_MAINTAINED,
+    RULE_QUALIFYING_TEAMMATE_ADVANTAGE,
+    RULE_QUALIFYING_TEAMMATE_DEFICIT,
+    RULE_QUALIFYING_TEAMMATE_EQUAL,
+    RULE_RACE_PACE_TEAMMATE_ADVANTAGE,
+    RULE_RACE_PACE_TEAMMATE_DEFICIT,
+    RULE_REGISTRY,
+    RULE_TEAMMATE_FINISH_ADVANTAGE,
+    RULE_TEAMMATE_GRID_ADVANTAGE,
+    RULE_TEAMMATE_POINTS_ADVANTAGE,
+    RULE_TEAMMATE_POINTS_DEFICIT,
+    get_rule,
+)
+from app.insights.types import (
+    Direction,
+    EvidenceStrength,
+    Insight,
+    InsightCategory,
+    InsightTraceability,
+    RuleDefinition,
+    classify_evidence_strength,
+)
+
+__all__ = [
+    # Types & Enums
+    "Direction",
+    "EvidenceStrength",
+    "Insight",
+    "InsightCategory",
+    "InsightTraceability",
+    "RuleDefinition",
+    "classify_evidence_strength",
+    # Rule Constants & Registry
+    "RULE_REGISTRY",
+    "get_rule",
+    "RULE_QUALIFYING_TEAMMATE_ADVANTAGE",
+    "RULE_QUALIFYING_TEAMMATE_DEFICIT",
+    "RULE_QUALIFYING_TEAMMATE_EQUAL",
+    "RULE_POSITION_GAIN",
+    "RULE_POSITION_LOSS",
+    "RULE_POSITION_MAINTAINED",
+    "RULE_LARGE_POSITION_GAIN",
+    "RULE_FASTEST_RECORDED_LAP",
+    "RULE_RACE_PACE_TEAMMATE_ADVANTAGE",
+    "RULE_RACE_PACE_TEAMMATE_DEFICIT",
+    "RULE_FAST_PIT_STOP",
+    "RULE_PIT_STOP_HIGH_VARIABILITY",
+    "RULE_TEAMMATE_POINTS_ADVANTAGE",
+    "RULE_TEAMMATE_POINTS_DEFICIT",
+    "RULE_TEAMMATE_FINISH_ADVANTAGE",
+    "RULE_TEAMMATE_GRID_ADVANTAGE",
+    "LARGE_POSITION_GAIN_THRESHOLD",
+    "FAST_PIT_STOP_THRESHOLD_MILLIS",
+    "PIT_STOP_HIGH_VARIABILITY_THRESHOLD_MILLIS",
+    # Evaluators
+    "evaluate_qualifying_teammate_insight",
+    "evaluate_single_driver_position_change",
+    "evaluate_multi_race_position_change",
+    "evaluate_fastest_recorded_lap",
+    "evaluate_teammate_race_pace",
+    "evaluate_fast_pit_stop",
+    "evaluate_pit_stop_variability",
+    "evaluate_teammate_comparison",
+    # Engine
+    "InsightEngine",
+]
