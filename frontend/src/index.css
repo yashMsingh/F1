@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+/* Base Dark Motorsport Theme */
+:root {
+  --bg-dark: #0e1015;
+  --surface-card: #161822;
+  --surface-elevated: #1f2230;
+  --border-subtle: #2a2e40;
+  --border-hover: #3d435e;
+  --f1-red: #e10600;
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Theme Utility Classes */
+.bg-surface-dark {
+  background-color: var(--bg-dark);
+}
+.bg-surface-card {
+  background-color: var(--surface-card);
+}
+.bg-surface-elevated {
+  background-color: var(--surface-elevated);
+}
+.border-border-subtle {
+  border-color: var(--border-subtle);
+}
+.border-border-hover {
+  border-color: var(--border-hover);
+}
+.text-text-primary {
+  color: var(--text-primary);
+}
+.text-text-secondary {
+  color: var(--text-secondary);
+}
+.text-text-muted {
+  color: var(--text-muted);
+}
+.text-f1-red {
+  color: var(--f1-red);
+}
+.bg-f1-red {
+  background-color: var(--f1-red);
+}
+
+/* Form Inputs */
+.select-input {
+  background-color: var(--surface-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 0.2s;
+  cursor: pointer;
+}
+.select-input:hover {
+  border-color: var(--border-hover);
+}
+.select-input:focus {
+  border-color: var(--f1-red);
+}
+
+/* Badges & Pills */
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+}
+
+/* Navigation Tabs */
+.tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.tab-btn-active {
+  color: #ffffff;
+  border-color: var(--f1-red);
+  background-color: rgba(225, 6, 0, 0.05);
+}
+.tab-btn-inactive {
+  color: var(--text-muted);
+}
+.tab-btn-inactive:hover {
+  color: var(--text-secondary);
+  border-color: var(--border-subtle);
+}
+
+/* Table styling */
+table {
+  border-collapse: collapse;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-hover);
+}

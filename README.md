@@ -2,9 +2,9 @@
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-3776AB.svg?logo=python&logoColor=white)](https://www.python.org/)
 [![PostgreSQL 15+](https://img.shields.io/badge/postgresql-15+-336791.svg?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
-[![SQLAlchemy 2.0](https://img.shields.io/badge/sqlalchemy-2.0+-red.svg)](https://www.sqlalchemy.org/)
-[![Alembic](https://img.shields.io/badge/alembic-migrations-orange.svg)](https://alembic.sqlalchemy.org/)
-[![Tests Passing](https://img.shields.io/badge/tests-134%20passed-brightgreen.svg)]()
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-009688.svg?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![React 19](https://img.shields.io/badge/React-19+-61DAFB.svg?logo=react&logoColor=black)](https://react.dev/)
+[![Tests Passing](https://img.shields.io/badge/tests-277%20passed-brightgreen.svg)]()
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 An AI-powered Formula 1 race analytics and intelligence platform that transforms raw historical and modern Grand Prix telemetry into structured relational data, deterministic statistical analytics, anomaly detections, and evidence-backed AI explanations.
@@ -126,18 +126,19 @@ flowchart TD
 
 ---
 
-## Tech Stack
+### Tech Stack
 
 | Layer | Technologies |
 |---|---|
-| **Language** | Python 3.10+ |
-| **Database** | PostgreSQL 15+ / 16 (Alpine in Docker) |
+| **Language** | Python 3.10+, TypeScript 5.8+ |
+| **Database** | PostgreSQL 15+ / 16 (Alpine in Docker), SQLite (isolated test runner) |
 | **ORM & Migrations** | SQLAlchemy 2.0 (mapped declarative models), Alembic |
-| **HTTP & Networking** | httpx (async HTTP/2-ready client) |
-| **Data Science & Math** | Pandas, NumPy, SciPy |
+| **Analytics & Statistics** | Python `statistics`, `math`, Pandas, NumPy, SciPy |
+| **Deterministic Insights** | Rule registry (16 domain rules), deterministic categorization |
+| **AI Narrative Layer** | Provider-agnostic client (Groq / OpenRouter), schema validator |
 | **API Server** | FastAPI, Pydantic v2, Uvicorn |
-| **Frontend** | React 18, TypeScript, Vite, Tailwind CSS, Recharts |
-| **Testing** | pytest, pytest-asyncio, factory/fixtures |
+| **Frontend Dashboard** | React 19, TypeScript, Vite, Tailwind CSS, Lucide Icons |
+| **Testing** | pytest, pytest-asyncio, FastAPI TestClient, Vitest, Testing Library |
 | **Containerization** | Docker, Docker Compose |
 
 ---
@@ -147,42 +148,49 @@ flowchart TD
 ```
 F1/
 ├── app/
+│   ├── ai/                     # Grounded AI explanation layer (Groq/OpenRouter)
+│   ├── analytics/              # Deterministic SQL analytical queries & types
+│   ├── api/                    # FastAPI backend REST boundary
+│   │   ├── app.py              # Application factory & CORS middleware
+│   │   ├── deps.py             # Database session injection
+│   │   ├── schemas.py          # Pydantic serialization models
+│   │   └── routes/             # Thin routes (races, analytics, insights, narrative)
 │   ├── db/                     # Database engine, session, and models
 │   │   ├── base.py             # SQLAlchemy declarative Base
 │   │   ├── session.py          # Database session factory & connection pool
 │   │   └── models/             # SQLAlchemy 2.0 mapped model classes
 │   ├── etl/                    # ETL persistence orchestration
-│   │   ├── exceptions.py       # Domain-specific ETL exceptions
-│   │   ├── repositories/       # Idempotent database repositories
-│   │   ├── service.py          # High-level ETL service orchestrator
-│   │   └── types.py            # Typed ingestion results & statistics
-│   └── f1/                     # Jolpica / Ergast API client & parsing
-│       ├── client.py           # Async Jolpica API client with rate limiting
-│       ├── exceptions.py       # API and HTTP parsing errors
-│       ├── parsing/            # Pydantic schemas, domain parsers, time utilities
-│       └── types.py            # Session and query parameter types
+│   ├── f1/                     # Jolpica / Ergast API client & parsing
+│   ├── insights/               # Deterministic rule-based insight engine
+│   │   ├── engine.py           # Insight coordinator & deduplicator
+│   │   ├── rules.py            # Rule registry (16 deterministic rules)
+│   │   └── evaluators/         # Category evaluators (quali, pit stops, pace, etc.)
+│   └── statistics/             # Pure statistical analysis & evidence layer
+├── frontend/                   # React + TypeScript + Vite dashboard
+│   ├── src/
+│   │   ├── api/                # Centralized typed API client
+│   │   ├── components/         # Motorsport UI components & sections
+│   │   ├── types/              # TypeScript schema contracts
+│   │   ├── utils/              # Time, delta, and position formatters
+│   │   ├── App.tsx             # Root dashboard layout & tab navigator
+│   │   └── index.css           # Dark motorsport styling
 ├── alembic/                    # Database migration scripts & environment
-│   ├── env.py
-│   └── versions/               # Versioned migration files
 ├── docs/                       # Comprehensive specifications & architectural blueprints
 │   ├── ai-insight-spec.md      # Grounded LLM prompt & evidence package specs
+│   ├── ai-narrative.md         # AI narrator architecture & fault tolerance
 │   ├── analytics-spec.md       # Statistical & telemetry metric definitions
-│   ├── api-client.md           # External API client specification
-│   ├── architecture.md         # Deep-dive system architecture
-│   ├── data-dictionary.md      # Field-level dictionary & validation limits
-│   ├── data-sources.md         # Jolpica & FastF1 endpoint documentation
-│   ├── database-schema.md      # Relational schema DDL & relationship maps
-│   ├── product-spec.md         # Full product vision and user flows
-│   ├── roadmap.md              # Phased implementation roadmap
-│   └── decisions/              # Architecture Decision Records (ADRs)
-├── scripts/                    # Operational & smoke-test scripts
-│   ├── check_db.py             # Database connectivity & table check
-│   └── smoke_test_jolpica.py   # Live API integration smoke test
-├── tests/                      # Automated test suite (unit & integration)
-│   ├── conftest.py             # Reusable database, engine, and API fixtures
+│   ├── dashboard.md            # Dashboard architecture, API contracts & UI guide
+│   ├── insights.md             # Deterministic insight engine specification
+│   ├── statistics.md           # Statistical functions and methodology
+│   └── architecture.md         # Deep-dive system architecture
+├── tests/                      # Automated test suite (277 tests)
+│   ├── ai/                     # AI narrative layer tests (mocked providers)
+│   ├── analytics/              # SQL analytical query tests
+│   ├── api/                    # FastAPI endpoint & serialization tests
 │   ├── db/                     # Schema, constraint, and migration tests
-│   ├── etl/                    # Repository and ETL service tests
-│   └── f1/                     # Client, parser, and time utility tests
+│   ├── etl/                    # Ingestion and repository tests
+│   ├── insights/               # Deterministic rule and traceability tests
+│   └── statistics/             # Statistical computation tests
 ├── AGENTS.md                   # AI agent coding instructions & non-negotiables
 ├── docker-compose.yml          # PostgreSQL service container definition
 ├── pyproject.toml              # Project dependencies, packaging, and tool config
@@ -285,6 +293,24 @@ Test live Jolpica API access and validation:
 python scripts/smoke_test_jolpica.py
 ```
 
+### Running the Application (Dashboard & API)
+
+Start the FastAPI backend server:
+
+```bash
+uvicorn app.api.app:app --reload --host 127.0.0.1 --port 8000
+```
+- Interactive Swagger docs: `http://127.0.0.1:8000/docs`
+
+Start the React + TypeScript frontend:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+- Dashboard UI: `http://localhost:5173`
+
 ---
 
 ## Running Tests
@@ -312,6 +338,10 @@ Detailed architectural blueprints, design decisions, and data contracts are main
 
 | Document | Purpose |
 |---|---|
+| [`docs/dashboard.md`](docs/dashboard.md) | Full dashboard architecture, API endpoint contracts, and UI guide |
+| [`docs/ai-narrative.md`](docs/ai-narrative.md) | Grounded AI narrative layer, multi-provider integration & validation |
+| [`docs/insights.md`](docs/insights.md) | Deterministic insight engine specification, rule catalog & traceability |
+| [`docs/statistics.md`](docs/statistics.md) | Statistical analysis and evidence layer methodology & formulas |
 | [`docs/architecture.md`](docs/architecture.md) | Complete system architecture, component boundaries, and pipeline flow |
 | [`docs/product-spec.md`](docs/product-spec.md) | Product vision, target personas, user stories, and feature matrix |
 | [`docs/database-schema.md`](docs/database-schema.md) | Complete PostgreSQL schema definitions, data types, indexes, and constraints |
