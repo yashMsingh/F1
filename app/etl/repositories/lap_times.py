@@ -103,13 +103,57 @@ class LapTimeRepository(BaseRepository):
         same_event = all(i.season == first.season and i.round == first.round for i in items)
         common_race_id = self._resolve_race_id(first.season, first.round) if same_event else None
 
+        existing_map: dict[tuple[int, int], LapTime] = {}
+        if common_race_id is not None:
+            stmt = select(LapTime).where(LapTime.race_id == common_race_id)
+            for lt in self.session.scalars(stmt):
+                existing_map[(lt.driver_id, lt.lap_number)] = lt
+
         for item in items:
             race_id = common_race_id if common_race_id is not None else None
-            _, action = self.upsert(item, race_id=race_id, driver_cache=driver_cache)
-            if action == "inserted":
+            # Resolve driver_id with cache
+            if item.driver_id in driver_cache:
+                d_id = driver_cache[item.driver_id]
+            else:
+                d_id = self._resolve_driver_id(item.driver_id)
+                driver_cache[item.driver_id] = d_id
+
+            # Check in-memory map or DB
+            if (d_id, item.lap_number) in existing_map:
+                existing = existing_map[(d_id, item.lap_number)]
+            else:
+                r_id = race_id if race_id is not None else self._resolve_race_id(item.season, item.round)
+                existing = self.get_by_key(r_id, d_id, item.lap_number)
+
+            if existing is None:
+                r_id = race_id if race_id is not None else self._resolve_race_id(item.season, item.round)
+                lap_time = LapTime(
+                    race_id=r_id,
+                    driver_id=d_id,
+                    lap_number=item.lap_number,
+                    position=item.position,
+                    time=item.time or "",
+                    time_millis=item.time_millis,
+                )
+                self.session.add(lap_time)
+                existing_map[(d_id, item.lap_number)] = lap_time
                 stats.records_inserted += 1
-            elif action == "updated":
-                stats.records_updated += 1
-            elif action == "skipped":
-                stats.records_skipped += 1
+            else:
+                # Check for mutations
+                updated = False
+                if not values_equal(existing.position, item.position):
+                    existing.position = item.position
+                    updated = True
+                if item.time and not values_equal(existing.time, item.time):
+                    existing.time = item.time
+                    updated = True
+                if not values_equal(existing.time_millis, item.time_millis):
+                    existing.time_millis = item.time_millis
+                    updated = True
+
+                if updated:
+                    stats.records_updated += 1
+                else:
+                    stats.records_skipped += 1
+
         return stats

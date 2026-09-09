@@ -107,13 +107,58 @@ class PitStopRepository(BaseRepository):
         same_event = all(i.season == first.season and i.round == first.round for i in items)
         common_race_id = self._resolve_race_id(first.season, first.round) if same_event else None
 
+        existing_map: dict[tuple[int, int], PitStop] = {}
+        if common_race_id is not None:
+            stmt = select(PitStop).where(PitStop.race_id == common_race_id)
+            for ps in self.session.scalars(stmt):
+                existing_map[(ps.driver_id, ps.stop_number)] = ps
+
         for item in items:
             race_id = common_race_id if common_race_id is not None else None
-            _, action = self.upsert(item, race_id=race_id, driver_cache=driver_cache)
-            if action == "inserted":
+            if item.driver_id in driver_cache:
+                d_id = driver_cache[item.driver_id]
+            else:
+                d_id = self._resolve_driver_id(item.driver_id)
+                driver_cache[item.driver_id] = d_id
+
+            if (d_id, item.stop_number) in existing_map:
+                existing = existing_map[(d_id, item.stop_number)]
+            else:
+                r_id = race_id if race_id is not None else self._resolve_race_id(item.season, item.round)
+                existing = self.get_by_key(r_id, d_id, item.stop_number)
+
+            if existing is None:
+                r_id = race_id if race_id is not None else self._resolve_race_id(item.season, item.round)
+                pit_stop = PitStop(
+                    race_id=r_id,
+                    driver_id=d_id,
+                    stop_number=item.stop_number,
+                    lap=item.lap,
+                    time_of_day=item.time_of_day,
+                    duration_text=item.duration_text,
+                    duration_millis=item.duration_millis,
+                )
+                self.session.add(pit_stop)
+                existing_map[(d_id, item.stop_number)] = pit_stop
                 stats.records_inserted += 1
-            elif action == "updated":
-                stats.records_updated += 1
-            elif action == "skipped":
-                stats.records_skipped += 1
+            else:
+                updated = False
+                if not values_equal(existing.lap, item.lap):
+                    existing.lap = item.lap
+                    updated = True
+                if not values_equal(existing.time_of_day, item.time_of_day):
+                    existing.time_of_day = item.time_of_day
+                    updated = True
+                if not values_equal(existing.duration_text, item.duration_text):
+                    existing.duration_text = item.duration_text
+                    updated = True
+                if not values_equal(existing.duration_millis, item.duration_millis):
+                    existing.duration_millis = item.duration_millis
+                    updated = True
+
+                if updated:
+                    stats.records_updated += 1
+                else:
+                    stats.records_skipped += 1
+
         return stats
