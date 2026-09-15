@@ -384,3 +384,182 @@ class TeammateComparison:
     grid_delta: Optional[int]
     finish_delta: Optional[int]
     points_delta: Decimal
+
+
+# ─── Longitudinal / Multi-Race Analytics ──────────────────────────────────────
+
+
+@dataclass(frozen=True)
+class DriverTrajectoryItem:
+    """A driver's performance data point for a single race in a season trajectory."""
+
+    season_year: int
+    round: int
+    race_name: str
+    circuit_name: str
+    race_date: date
+    constructor_id: str
+    constructor_name: str
+    grid_position: Optional[int]
+    finish_position: Optional[int]
+    position_text: str
+    status: str
+    is_classified: bool
+    race_points: Decimal
+    sprint_points: Decimal
+    total_round_points: Decimal
+    cumulative_race_points: Decimal
+    cumulative_sprint_points: Decimal
+    cumulative_total_points: Decimal
+    championship_standing_position: Optional[int]
+    pit_stop_count: int
+    fastest_lap_rank: Optional[int]
+
+
+@dataclass(frozen=True)
+class DriverSeasonAggregate:
+    """Summary of a driver's season performance up to a given round."""
+
+    season_year: int
+    up_to_round: int
+    driver_id: str
+    driver_code: Optional[str]
+    given_name: str
+    family_name: str
+    constructor_id: str
+    constructor_name: str
+    races_entered: int
+    races_started: int
+    races_classified: int
+    dnf_count: int
+    wins: int
+    podiums: int
+    points_finishes: int
+    total_race_points: Decimal
+    total_sprint_points: Decimal
+    total_points: Decimal
+    average_grid: Optional[float]
+    average_finish: Optional[float]
+    best_grid: Optional[int]
+    best_finish: Optional[int]
+    total_laps_completed: int
+    championship_standing: Optional[int]
+
+
+@dataclass(frozen=True)
+class ConstructorTrajectoryItem:
+    """A constructor's performance data point for a single race in a season trajectory."""
+
+    season_year: int
+    round: int
+    race_name: str
+    circuit_name: str
+    race_date: date
+    constructor_id: str
+    constructor_name: str
+    race_points: Decimal
+    sprint_points: Decimal
+    total_round_points: Decimal
+    cumulative_race_points: Decimal
+    cumulative_sprint_points: Decimal
+    cumulative_total_points: Decimal
+    best_finish: Optional[int]
+    podiums: int
+    cars_classified: int
+    cars_entered: int
+    championship_standing_position: Optional[int]
+
+
+@dataclass(frozen=True)
+class ConstructorDriverContribution:
+    """Breakdown of points contributed by a driver to a constructor in a season."""
+
+    driver_id: str
+    driver_name: str
+    race_points: Decimal
+    sprint_points: Decimal
+    total_points: Decimal
+    points_share_pct: Optional[float]
+    races_entered: int
+    best_finish: Optional[int]
+
+
+@dataclass(frozen=True)
+class ConstructorSeasonAggregate:
+    """Summary of a constructor's season performance up to a given round."""
+
+    season_year: int
+    up_to_round: int
+    constructor_id: str
+    constructor_name: str
+    races_entered: int
+    total_car_starts: int
+    total_car_finishes: int
+    dnf_count: int
+    wins: int
+    podiums: int
+    total_race_points: Decimal
+    total_sprint_points: Decimal
+    total_points: Decimal
+    driver_contributions: list[ConstructorDriverContribution]
+    championship_standing: Optional[int]
+
+
+@dataclass(frozen=True)
+class TeammateEventComparison:
+    """Event-level head-to-head comparison between two drivers on the same constructor."""
+
+    season_year: int
+    round: int
+    race_name: str
+    constructor_id: str
+    constructor_name: str
+    driver_a_id: str
+    driver_a_name: str
+    driver_b_id: str
+    driver_b_name: str
+    qualifying_a_pos: Optional[int]
+    qualifying_b_pos: Optional[int]
+    qualifying_delta_millis: Optional[int]
+    grid_a: Optional[int]
+    grid_b: Optional[int]
+    finish_a: Optional[int]
+    finish_b: Optional[int]
+    status_a: str
+    status_b: str
+    points_a: Decimal
+    points_b: Decimal
+    sprint_points_a: Decimal
+    sprint_points_b: Decimal
+    is_comparable_qualifying: bool
+    is_comparable_finish: bool
+    ahead_in_qualifying: Optional[str]
+    ahead_in_race: Optional[str]
+
+
+@dataclass(frozen=True)
+class SeasonTeammateComparison:
+    """Aggregated season head-to-head comparison between two drivers who were teammates."""
+
+    season_year: int
+    up_to_round: int
+    constructor_id: str
+    constructor_name: str
+    driver_a_id: str
+    driver_a_name: str
+    driver_b_id: str
+    driver_b_name: str
+    rounds_together: int
+    qualifying_head_to_head_a: int
+    qualifying_head_to_head_b: int
+    qualifying_comparable_rounds: int
+    race_head_to_head_a: int
+    race_head_to_head_b: int
+    race_comparable_rounds: int
+    points_a: Decimal
+    points_b: Decimal
+    sprint_points_a: Decimal
+    sprint_points_b: Decimal
+    total_points_a: Decimal
+    total_points_b: Decimal
+
