@@ -57,6 +57,9 @@ class InsightCategory(str, Enum):
     PIT_STOP = "PIT_STOP"
     TEAMMATE = "TEAMMATE"
     RACE_RESULT = "RACE_RESULT"
+    DRIVER_FORM = "DRIVER_FORM"
+    POINTS = "POINTS"
+    CONSTRUCTOR = "CONSTRUCTOR"
 
 
 class Direction(str, Enum):
@@ -128,6 +131,8 @@ class InsightTraceability:
     race_id: Optional[int] = None
     driver_id: Optional[str] = None
     constructor_id: Optional[str] = None
+    rounds_included: Optional[list[int]] = None
+    excluded_observations: Optional[int] = None
 
 
 @dataclass(frozen=True)
@@ -147,6 +152,7 @@ class Insight:
         evidence_strength: Evidence strength classification.
         sample_size: Valid observations supporting this insight.
         traceability: Complete audit trail back to statistical evidence.
+        explanation: Human-readable factual summary of the finding.
     """
 
     insight_id: str
@@ -161,3 +167,4 @@ class Insight:
     evidence_strength: EvidenceStrength
     sample_size: int
     traceability: InsightTraceability
+    explanation: Optional[str] = None

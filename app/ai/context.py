@@ -54,6 +54,8 @@ def build_evidence_context(
                 "round_num": t.round_num,
             },
         }
+        if ins.explanation:
+            rec["explanation"] = ins.explanation
         serialized_insights.append(rec)
 
         if ins.evidence_strength == EvidenceStrength.LOW:
