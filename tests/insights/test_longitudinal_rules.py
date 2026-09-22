@@ -32,6 +32,7 @@ from app.insights.evaluators.longitudinal import (
     evaluate_longitudinal_teammate_h2h,
 )
 from app.insights.rules import (
+    RULE_LONGITUDINAL_CONSTRUCTOR_PODIUM_RATE,
     RULE_LONGITUDINAL_CONSTRUCTOR_TRAJECTORY,
     RULE_LONGITUDINAL_FINISH_CONSISTENCY,
     RULE_LONGITUDINAL_POINTS_PER_ROUND,
@@ -376,6 +377,22 @@ class TestRecentFormRule:
         assert ins.magnitude == 1.0
         assert "Over the most recent 3 rounds" in ins.explanation
         assert "average finish of P1.0 across 2 valid finishes" in ins.explanation
+        assert "1 DNF excluded" in ins.explanation
+
+    def test_recent_form_window_vs_valid_observations_with_dnf(self):
+        """Audit 2: Ensure transparent distinction between 3-round window, 2 valid finishes, 1 excluded DNF."""
+        form = _make_form_summary(window_mean_finish=1.0, valid_observations=2, window_size=3)
+        ins = evaluate_longitudinal_recent_form(form)
+        assert ins is not None
+        # Window size is 3, but valid sample size is 2
+        assert ins.sample_size == 2
+        assert ins.traceability.sample_size == 2
+        assert ins.traceability.excluded_observations == 1
+        assert ins.traceability.rounds_included == [3, 4, 5]
+        assert ins.evidence_strength == EvidenceStrength.MODERATE  # n=2 is MODERATE
+        # Explanation must transparently state both window size and valid finishes count + DNF note
+        assert "Over the most recent 3 rounds (R3-R5)" in ins.explanation
+        assert "across 2 valid finishes (1 DNF excluded)" in ins.explanation
 
     def test_recent_form_exact_boundary(self):
         form = _make_form_summary(window_mean_finish=5.0, valid_observations=3, window_size=3)
@@ -555,7 +572,8 @@ class TestConstructorTrajectoryRule:
         insights = evaluate_constructor_longitudinal_insights(traj, season_year=2024, constructor_id="red_bull")
         assert len(insights) == 1
         ins = insights[0]
-        assert ins.rule_id == RULE_LONGITUDINAL_CONSTRUCTOR_TRAJECTORY
+        assert ins.rule_id == RULE_LONGITUDINAL_CONSTRUCTOR_PODIUM_RATE
+        assert ins.rule_id == RULE_LONGITUDINAL_CONSTRUCTOR_TRAJECTORY  # Verified backwards compatibility
         assert ins.category == InsightCategory.CONSTRUCTOR
         assert ins.magnitude == 1.0  # 5/5 = 100%
         assert ins.evidence_strength == EvidenceStrength.HIGH

@@ -29,6 +29,7 @@ from app.insights.rules import (
     LONGITUDINAL_RECENT_FORM_WINDOW_SIZE,
     LONGITUDINAL_TEAMMATE_POINTS_DIFF_THRESHOLD,
     LONGITUDINAL_TEAMMATE_WIN_RATE_THRESHOLD,
+    RULE_LONGITUDINAL_CONSTRUCTOR_PODIUM_RATE,
     RULE_LONGITUDINAL_CONSTRUCTOR_TRAJECTORY,
     RULE_LONGITUDINAL_FINISH_CONSISTENCY,
     RULE_LONGITUDINAL_POINTS_PER_ROUND,
@@ -517,11 +518,13 @@ def evaluate_longitudinal_recent_form(
         strength = classify_evidence_strength(latest_window.valid_observations, rule.min_sample_size)
         r_start = min(latest_window.rounds_included) if latest_window.rounds_included else latest_window.round
         r_end = max(latest_window.rounds_included) if latest_window.rounds_included else latest_window.round
+        excluded = len(latest_window.rounds_included) - latest_window.valid_observations
+        dnf_note = f" ({excluded} DNF excluded)" if excluded == 1 else (f" ({excluded} DNFs excluded)" if excluded > 1 else "")
         ins_id = f"{rule.rule_id}:{form_summary.season_year}:w{window_size}_r{latest_window.round}:{drv}:none"
 
         explanation = (
             f"Over the most recent {window_size} rounds (R{r_start}-R{r_end}), {drv} recorded an average "
-            f"finish of P{latest_window.mean:.1f} across {latest_window.valid_observations} valid finishes."
+            f"finish of P{latest_window.mean:.1f} across {latest_window.valid_observations} valid finishes{dnf_note}."
         )
 
         trace = InsightTraceability(
@@ -914,7 +917,7 @@ def evaluate_constructor_longitudinal_insights(
         List of generated constructor insights.
     """
     n = len(trajectory)
-    rule = get_rule(RULE_LONGITUDINAL_CONSTRUCTOR_TRAJECTORY)
+    rule = get_rule(RULE_LONGITUDINAL_CONSTRUCTOR_PODIUM_RATE)
 
     if n < rule.min_sample_size:
         return []

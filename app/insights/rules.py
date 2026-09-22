@@ -39,7 +39,8 @@ RULE_LONGITUDINAL_POINTS_PER_ROUND = "LONGITUDINAL_POINTS_PER_ROUND"
 RULE_LONGITUDINAL_TEAMMATE_QUALIFYING_H2H = "LONGITUDINAL_TEAMMATE_QUALIFYING_H2H"
 RULE_LONGITUDINAL_TEAMMATE_RACE_H2H = "LONGITUDINAL_TEAMMATE_RACE_H2H"
 RULE_LONGITUDINAL_TEAMMATE_POINTS_H2H = "LONGITUDINAL_TEAMMATE_POINTS_H2H"
-RULE_LONGITUDINAL_CONSTRUCTOR_TRAJECTORY = "LONGITUDINAL_CONSTRUCTOR_TRAJECTORY"
+RULE_LONGITUDINAL_CONSTRUCTOR_PODIUM_RATE = "LONGITUDINAL_CONSTRUCTOR_PODIUM_RATE"
+RULE_LONGITUDINAL_CONSTRUCTOR_TRAJECTORY = RULE_LONGITUDINAL_CONSTRUCTOR_PODIUM_RATE  # Semantic alias
 
 # ─── Configurable Named Threshold Constants ──────────────────────────────────
 
@@ -261,10 +262,10 @@ RULE_REGISTRY: dict[str, RuleDefinition] = {
         min_sample_size=3,
         thresholds={"points_diff_threshold": LONGITUDINAL_TEAMMATE_POINTS_DIFF_THRESHOLD},
     ),
-    RULE_LONGITUDINAL_CONSTRUCTOR_TRAJECTORY: RuleDefinition(
-        rule_id=RULE_LONGITUDINAL_CONSTRUCTOR_TRAJECTORY,
+    RULE_LONGITUDINAL_CONSTRUCTOR_PODIUM_RATE: RuleDefinition(
+        rule_id=RULE_LONGITUDINAL_CONSTRUCTOR_PODIUM_RATE,
         category=InsightCategory.CONSTRUCTOR,
-        description=f"Constructor achieved podium finishes in at least {LONGITUDINAL_CONSTRUCTOR_PODIUM_RATE_THRESHOLD:.0%} of entered championship rounds across the season trajectory.",
+        description=f"Constructor achieved podium finishes in at least {LONGITUDINAL_CONSTRUCTOR_PODIUM_RATE_THRESHOLD:.0%} of entered championship rounds across the season.",
         metric="podium_rate",
         min_sample_size=3,
         thresholds={"podium_rate_threshold": LONGITUDINAL_CONSTRUCTOR_PODIUM_RATE_THRESHOLD},
