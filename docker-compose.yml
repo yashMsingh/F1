@@ -7,7 +7,7 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-f1user}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT:-5432}:5432"
     volumes:
       - f1_pgdata:/var/lib/postgresql/data
     healthcheck:
