@@ -69,6 +69,7 @@ def parse_and_validate_response(
     for ins in insights:
         subj = ins.subject_id.lower()
         comp = (ins.comparison_subject_id or "").lower()
+        t = ins.traceability
 
         # Direction checks: FASTER vs SLOWER
         if ins.direction == Direction.FASTER and comp:
@@ -99,6 +100,58 @@ def parse_and_validate_response(
                     f"Contradiction detected: Narrative states '{subj}' gained positions, "
                     f"contradicting insight direction '{ins.direction.value}'."
                 )
+
+        # 4. Longitudinal Contradiction Checks
+
+        # DNF / Finish Contradiction
+        if t.excluded_observations is not None and t.excluded_observations > 0:
+            total_races = (
+                len(t.rounds_included)
+                if t.rounds_included
+                else (ins.sample_size + t.excluded_observations)
+            )
+            dnf_pattern = (
+                rf"\b{re.escape(subj)}\b.*?\b(finished all|completed all|finished every|no dnfs?|never retired|100% finish)\b"
+            )
+            count_pattern = rf"\b(finished all|completed all)\s+{total_races}\b"
+            if re.search(dnf_pattern, narrative_lower) or re.search(count_pattern, narrative_lower):
+                raise AIResponseValidationError(
+                    f"Contradiction detected: Narrative states '{subj}' finished all races / had no DNFs, "
+                    f"contradicting evidence of {t.excluded_observations} excluded observation(s) (DNFs)."
+                )
+
+        # Teammate H2H Record Contradiction (e.g. "won 3 of 5" when evidence is 5 of 5)
+        if ins.metric in ("qualifying_win_rate", "race_win_rate") and ins.magnitude is not None and ins.sample_size > 0:
+            expected_wins = round(ins.magnitude * ins.sample_size)
+            ratio_matches = re.finditer(r"\b(\d+)\s+(?:of|out of)\s+(\d+)\b", narrative_lower)
+            for rm in ratio_matches:
+                claimed_wins = int(rm.group(1))
+                claimed_total = int(rm.group(2))
+                if claimed_total == ins.sample_size and claimed_wins != expected_wins:
+                    raise AIResponseValidationError(
+                        f"Contradiction detected: Narrative states '{claimed_wins} of {claimed_total}' for '{subj}', "
+                        f"contradicting evidence of {expected_wins} wins out of {ins.sample_size}."
+                    )
+
+            score_matches = re.finditer(r"\b(\d+)\s*-\s*(\d+)\b", narrative_lower)
+            for sm in score_matches:
+                w, l = int(sm.group(1)), int(sm.group(2))
+                if w + l == ins.sample_size and w != expected_wins:
+                    raise AIResponseValidationError(
+                        f"Contradiction detected: Narrative states score '{w}-{l}' for '{subj}', "
+                        f"contradicting evidence of {expected_wins}-{ins.sample_size - expected_wins}."
+                    )
+
+        # Recent form valid finishes count contradiction
+        if ins.rule_id == "LONGITUDINAL_RECENT_FORM":
+            finish_matches = re.finditer(r"\bacross\s+(\d+)\s+valid finishes\b", narrative_lower)
+            for fm in finish_matches:
+                claimed_finishes = int(fm.group(1))
+                if claimed_finishes != ins.sample_size:
+                    raise AIResponseValidationError(
+                        f"Contradiction detected: Narrative states across '{claimed_finishes}' valid finishes, "
+                        f"contradicting evidence sample size of {ins.sample_size}."
+                    )
 
     return NarrativeResponse(
         narrative=narrative.strip(),

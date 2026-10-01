@@ -21,17 +21,19 @@ Analytical SQL Layer (Phase 2B.4)
       ↓
 Statistical Evidence Layer (Phase 2B.5)
       ↓
-Deterministic Insight Engine (Phase 2B.6)
+Deterministic Insight Engine (Phase 2B.6 / 3D)
       ↓
-Evidence Context Builder (Phase 2B.7)  ← THIS PHASE
+Application Services Layer (`LongitudinalInsightService`)
+      ↓
+Evidence Context Builder (Phase 2B.7 / 3E)
       ↓
 LLM Provider Abstraction
   ├── Groq API
   └── OpenRouter API
       ↓
-Deterministic Response Validation
+Deterministic Response Validation (Contradiction & DNF Checks)
       ↓
-Application Consumer
+Application Consumer (FastAPI Routes / Dashboard)
 ```
 
 ---
@@ -110,6 +112,9 @@ Validation checks:
   - Rejects text claiming the subject was slower if the insight is `FASTER`.
   - Rejects text claiming the subject lost positions if the insight is `GAINED`.
   - Rejects text claiming the subject gained positions if the insight is `LOST`.
+  - Rejects claims of finishing all races / no DNFs if `excluded_observations > 0`.
+  - Rejects claims of incorrect H2H scores (e.g. "won 3 of 5") contradicting deterministic win rate.
+  - Rejects claims contradicting recent form valid finish counts.
 
 ---
 

@@ -223,6 +223,8 @@ class InsightTraceabilityResponse(BaseModel):
     race_id: Optional[int] = None
     driver_id: Optional[str] = None
     constructor_id: Optional[str] = None
+    rounds_included: Optional[list[int]] = None
+    excluded_observations: Optional[int] = None
 
     model_config = ConfigDict(from_attributes=True)
 
@@ -239,6 +241,8 @@ class InsightResponse(BaseModel):
     unit: Optional[str] = None
     evidence_strength: str
     sample_size: int
+    scope: Optional[str] = None
+    explanation: Optional[str] = None
     traceability: InsightTraceabilityResponse
 
     model_config = ConfigDict(from_attributes=True)
@@ -249,7 +253,27 @@ class InsightsResponse(BaseModel):
     total: int
 
 
+class SeasonInsightsResponse(BaseModel):
+    season: int
+    scope: str = "longitudinal"
+    insights: list[InsightResponse]
+    total: int
+
+
 # ─── AI Narrative ─────────────────────────────────────────────────────────────
+
+
+class NarrativeGenerateRequest(BaseModel):
+    """Unified request model for narrative generation supporting race, longitudinal, or mixed scopes."""
+
+    season: int
+    scope: str = "longitudinal"  # "race", "longitudinal", or "mixed"
+    round_num: Optional[int] = None  # required when scope="race"
+    driver_id: Optional[str] = None
+    constructor_id: Optional[str] = None
+    driver_a_id: Optional[str] = None  # teammate comparison
+    driver_b_id: Optional[str] = None  # teammate comparison
+    up_to_round: Optional[int] = None  # longitudinal round cutoff
 
 
 class NarrativeResponse(BaseModel):
@@ -260,3 +284,5 @@ class NarrativeResponse(BaseModel):
     limitations: list[str] = []
     evidence_references: list[str] = []
     error: Optional[str] = None
+    scope: Optional[str] = None
+
