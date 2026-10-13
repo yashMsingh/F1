@@ -45,6 +45,8 @@ coverage.xml
 *.sqlite3
 *.db
 *.log
+*.sql
+backups/
 
 # FastF1 Cache
 .fastf1-cache/
