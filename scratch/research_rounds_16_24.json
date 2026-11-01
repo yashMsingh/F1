@@ -1,0 +1,515 @@
+{
+  "16": {
+    "race_name": "Italian Grand Prix",
+    "circuit_id": "monza",
+    "circuit_name": "Autodromo Nazionale di Monza",
+    "date": "2024-09-01",
+    "has_sprint": false,
+    "results_count": 20,
+    "winner": "Charles Leclerc",
+    "drivers": [
+      "leclerc",
+      "piastri",
+      "norris",
+      "sainz",
+      "hamilton",
+      "max_verstappen",
+      "russell",
+      "perez",
+      "albon",
+      "kevin_magnussen",
+      "alonso",
+      "colapinto",
+      "ricciardo",
+      "ocon",
+      "gasly",
+      "bottas",
+      "hulkenberg",
+      "zhou",
+      "stroll",
+      "tsunoda"
+    ],
+    "special_results": [
+      {
+        "driver": "tsunoda",
+        "pos": "20",
+        "pos_text": "R",
+        "status": "Retired"
+      }
+    ],
+    "qualifying_count": 20,
+    "null_quali_drivers": [],
+    "sprint_count": 0,
+    "pit_stops_count": 30,
+    "driver_standings_count": 22,
+    "constructor_standings_count": 10
+  },
+  "17": {
+    "race_name": "Azerbaijan Grand Prix",
+    "circuit_id": "baku",
+    "circuit_name": "Baku City Circuit",
+    "date": "2024-09-15",
+    "has_sprint": false,
+    "results_count": 20,
+    "winner": "Oscar Piastri",
+    "drivers": [
+      "piastri",
+      "leclerc",
+      "russell",
+      "norris",
+      "max_verstappen",
+      "alonso",
+      "albon",
+      "colapinto",
+      "hamilton",
+      "bearman",
+      "hulkenberg",
+      "gasly",
+      "ricciardo",
+      "zhou",
+      "ocon",
+      "bottas",
+      "perez",
+      "sainz",
+      "stroll",
+      "tsunoda"
+    ],
+    "special_results": [
+      {
+        "driver": "perez",
+        "pos": "17",
+        "pos_text": "17",
+        "status": "Retired"
+      },
+      {
+        "driver": "sainz",
+        "pos": "18",
+        "pos_text": "18",
+        "status": "Retired"
+      },
+      {
+        "driver": "stroll",
+        "pos": "19",
+        "pos_text": "19",
+        "status": "Retired"
+      },
+      {
+        "driver": "tsunoda",
+        "pos": "20",
+        "pos_text": "R",
+        "status": "Retired"
+      }
+    ],
+    "qualifying_count": 20,
+    "null_quali_drivers": [],
+    "sprint_count": 0,
+    "pit_stops_count": 22,
+    "driver_standings_count": 22,
+    "constructor_standings_count": 10
+  },
+  "18": {
+    "race_name": "Singapore Grand Prix",
+    "circuit_id": "marina_bay",
+    "circuit_name": "Marina Bay Street Circuit",
+    "date": "2024-09-22",
+    "has_sprint": false,
+    "results_count": 20,
+    "winner": "Lando Norris",
+    "drivers": [
+      "norris",
+      "max_verstappen",
+      "piastri",
+      "russell",
+      "leclerc",
+      "hamilton",
+      "sainz",
+      "alonso",
+      "hulkenberg",
+      "perez",
+      "colapinto",
+      "tsunoda",
+      "ocon",
+      "stroll",
+      "zhou",
+      "bottas",
+      "gasly",
+      "ricciardo",
+      "kevin_magnussen",
+      "albon"
+    ],
+    "special_results": [
+      {
+        "driver": "kevin_magnussen",
+        "pos": "19",
+        "pos_text": "19",
+        "status": "Retired"
+      },
+      {
+        "driver": "albon",
+        "pos": "20",
+        "pos_text": "R",
+        "status": "Retired"
+      }
+    ],
+    "qualifying_count": 20,
+    "null_quali_drivers": [],
+    "sprint_count": 0,
+    "pit_stops_count": 23,
+    "driver_standings_count": 22,
+    "constructor_standings_count": 10
+  },
+  "19": {
+    "race_name": "United States Grand Prix",
+    "circuit_id": "americas",
+    "circuit_name": "Circuit of the Americas",
+    "date": "2024-10-20",
+    "has_sprint": true,
+    "results_count": 20,
+    "winner": "Charles Leclerc",
+    "drivers": [
+      "leclerc",
+      "sainz",
+      "max_verstappen",
+      "norris",
+      "piastri",
+      "russell",
+      "perez",
+      "hulkenberg",
+      "lawson",
+      "colapinto",
+      "kevin_magnussen",
+      "gasly",
+      "alonso",
+      "tsunoda",
+      "stroll",
+      "albon",
+      "bottas",
+      "ocon",
+      "zhou",
+      "hamilton"
+    ],
+    "special_results": [
+      {
+        "driver": "hamilton",
+        "pos": "20",
+        "pos_text": "R",
+        "status": "Retired"
+      }
+    ],
+    "qualifying_count": 20,
+    "null_quali_drivers": [],
+    "sprint_count": 20,
+    "pit_stops_count": 23,
+    "driver_standings_count": 23,
+    "constructor_standings_count": 10
+  },
+  "20": {
+    "race_name": "Mexico City Grand Prix",
+    "circuit_id": "rodriguez",
+    "circuit_name": "Aut\u00f3dromo Hermanos Rodr\u00edguez",
+    "date": "2024-10-27",
+    "has_sprint": false,
+    "results_count": 20,
+    "winner": "Carlos Sainz",
+    "drivers": [
+      "sainz",
+      "norris",
+      "leclerc",
+      "hamilton",
+      "russell",
+      "max_verstappen",
+      "kevin_magnussen",
+      "piastri",
+      "hulkenberg",
+      "gasly",
+      "stroll",
+      "colapinto",
+      "ocon",
+      "bottas",
+      "zhou",
+      "lawson",
+      "perez",
+      "alonso",
+      "albon",
+      "tsunoda"
+    ],
+    "special_results": [
+      {
+        "driver": "alonso",
+        "pos": "18",
+        "pos_text": "R",
+        "status": "Retired"
+      },
+      {
+        "driver": "albon",
+        "pos": "19",
+        "pos_text": "R",
+        "status": "Retired"
+      },
+      {
+        "driver": "tsunoda",
+        "pos": "20",
+        "pos_text": "R",
+        "status": "Retired"
+      }
+    ],
+    "qualifying_count": 20,
+    "null_quali_drivers": [],
+    "sprint_count": 0,
+    "pit_stops_count": 21,
+    "driver_standings_count": 23,
+    "constructor_standings_count": 10
+  },
+  "21": {
+    "race_name": "S\u00e3o Paulo Grand Prix",
+    "circuit_id": "interlagos",
+    "circuit_name": "Aut\u00f3dromo Jos\u00e9 Carlos Pace",
+    "date": "2024-11-03",
+    "has_sprint": true,
+    "results_count": 20,
+    "winner": "Max Verstappen",
+    "drivers": [
+      "max_verstappen",
+      "ocon",
+      "gasly",
+      "russell",
+      "leclerc",
+      "norris",
+      "tsunoda",
+      "piastri",
+      "lawson",
+      "hamilton",
+      "perez",
+      "bearman",
+      "bottas",
+      "alonso",
+      "zhou",
+      "sainz",
+      "colapinto",
+      "albon",
+      "stroll",
+      "hulkenberg"
+    ],
+    "special_results": [
+      {
+        "driver": "sainz",
+        "pos": "16",
+        "pos_text": "R",
+        "status": "Retired"
+      },
+      {
+        "driver": "colapinto",
+        "pos": "17",
+        "pos_text": "R",
+        "status": "Retired"
+      },
+      {
+        "driver": "albon",
+        "pos": "18",
+        "pos_text": "W",
+        "status": "Did not start"
+      },
+      {
+        "driver": "stroll",
+        "pos": "19",
+        "pos_text": "W",
+        "status": "Did not start"
+      },
+      {
+        "driver": "hulkenberg",
+        "pos": "20",
+        "pos_text": "D",
+        "status": "Disqualified"
+      }
+    ],
+    "qualifying_count": 20,
+    "null_quali_drivers": [],
+    "sprint_count": 20,
+    "pit_stops_count": 35,
+    "driver_standings_count": 23,
+    "constructor_standings_count": 10
+  },
+  "22": {
+    "race_name": "Las Vegas Grand Prix",
+    "circuit_id": "vegas",
+    "circuit_name": "Las Vegas Strip Street Circuit",
+    "date": "2024-11-23",
+    "has_sprint": false,
+    "results_count": 20,
+    "winner": "George Russell",
+    "drivers": [
+      "russell",
+      "hamilton",
+      "sainz",
+      "leclerc",
+      "max_verstappen",
+      "norris",
+      "piastri",
+      "hulkenberg",
+      "tsunoda",
+      "perez",
+      "alonso",
+      "kevin_magnussen",
+      "zhou",
+      "colapinto",
+      "stroll",
+      "lawson",
+      "ocon",
+      "bottas",
+      "albon",
+      "gasly"
+    ],
+    "special_results": [
+      {
+        "driver": "albon",
+        "pos": "19",
+        "pos_text": "R",
+        "status": "Retired"
+      },
+      {
+        "driver": "gasly",
+        "pos": "20",
+        "pos_text": "R",
+        "status": "Retired"
+      }
+    ],
+    "qualifying_count": 20,
+    "null_quali_drivers": [],
+    "sprint_count": 0,
+    "pit_stops_count": 39,
+    "driver_standings_count": 23,
+    "constructor_standings_count": 10
+  },
+  "23": {
+    "race_name": "Qatar Grand Prix",
+    "circuit_id": "losail",
+    "circuit_name": "Lusail International Circuit",
+    "date": "2024-12-01",
+    "has_sprint": true,
+    "results_count": 20,
+    "winner": "Max Verstappen",
+    "drivers": [
+      "max_verstappen",
+      "leclerc",
+      "piastri",
+      "russell",
+      "gasly",
+      "sainz",
+      "alonso",
+      "zhou",
+      "kevin_magnussen",
+      "norris",
+      "bottas",
+      "hamilton",
+      "tsunoda",
+      "lawson",
+      "albon",
+      "hulkenberg",
+      "perez",
+      "stroll",
+      "colapinto",
+      "ocon"
+    ],
+    "special_results": [
+      {
+        "driver": "hulkenberg",
+        "pos": "16",
+        "pos_text": "R",
+        "status": "Retired"
+      },
+      {
+        "driver": "perez",
+        "pos": "17",
+        "pos_text": "R",
+        "status": "Retired"
+      },
+      {
+        "driver": "stroll",
+        "pos": "18",
+        "pos_text": "R",
+        "status": "Retired"
+      },
+      {
+        "driver": "colapinto",
+        "pos": "19",
+        "pos_text": "R",
+        "status": "Retired"
+      },
+      {
+        "driver": "ocon",
+        "pos": "20",
+        "pos_text": "R",
+        "status": "Retired"
+      }
+    ],
+    "qualifying_count": 20,
+    "null_quali_drivers": [],
+    "sprint_count": 20,
+    "pit_stops_count": 60,
+    "driver_standings_count": 23,
+    "constructor_standings_count": 10
+  },
+  "24": {
+    "race_name": "Abu Dhabi Grand Prix",
+    "circuit_id": "yas_marina",
+    "circuit_name": "Yas Marina Circuit",
+    "date": "2024-12-08",
+    "has_sprint": false,
+    "results_count": 20,
+    "winner": "Lando Norris",
+    "drivers": [
+      "norris",
+      "sainz",
+      "leclerc",
+      "hamilton",
+      "russell",
+      "max_verstappen",
+      "gasly",
+      "hulkenberg",
+      "alonso",
+      "piastri",
+      "albon",
+      "tsunoda",
+      "zhou",
+      "stroll",
+      "doohan",
+      "kevin_magnussen",
+      "lawson",
+      "bottas",
+      "colapinto",
+      "perez"
+    ],
+    "special_results": [
+      {
+        "driver": "lawson",
+        "pos": "17",
+        "pos_text": "17",
+        "status": "Retired"
+      },
+      {
+        "driver": "bottas",
+        "pos": "18",
+        "pos_text": "R",
+        "status": "Retired"
+      },
+      {
+        "driver": "colapinto",
+        "pos": "19",
+        "pos_text": "R",
+        "status": "Retired"
+      },
+      {
+        "driver": "perez",
+        "pos": "20",
+        "pos_text": "R",
+        "status": "Retired"
+      }
+    ],
+    "qualifying_count": 20,
+    "null_quali_drivers": [],
+    "sprint_count": 0,
+    "pit_stops_count": 28,
+    "driver_standings_count": 24,
+    "constructor_standings_count": 10
+  }
+}

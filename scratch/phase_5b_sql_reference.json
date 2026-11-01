@@ -1,0 +1,553 @@
+{
+  "sprint_rounds": [
+    5,
+    6,
+    11,
+    19,
+    21,
+    23
+  ],
+  "driver_aggregates": {
+    "max_verstappen": {
+      "name": "Max Verstappen",
+      "races_entered": 24,
+      "races_classified": 23,
+      "non_classified": 1,
+      "gp_points": 399.0,
+      "sprint_points": 38.0,
+      "total_points": 437.0,
+      "wins": 9,
+      "avg_classified_finish": 2.96,
+      "avg_grid": 3.54,
+      "championship_standing": 1
+    },
+    "perez": {
+      "name": "Sergio P\u00e9rez",
+      "races_entered": 24,
+      "races_classified": 19,
+      "non_classified": 5,
+      "gp_points": 138.0,
+      "sprint_points": 14.0,
+      "total_points": 152.0,
+      "wins": 0,
+      "avg_classified_finish": 7.42,
+      "avg_grid": 9.38,
+      "championship_standing": 8
+    },
+    "norris": {
+      "name": "Lando Norris",
+      "races_entered": 24,
+      "races_classified": 24,
+      "non_classified": 0,
+      "gp_points": 344.0,
+      "sprint_points": 30.0,
+      "total_points": 374.0,
+      "wins": 4,
+      "avg_classified_finish": 4.29,
+      "avg_grid": 3.38,
+      "championship_standing": 2
+    },
+    "leclerc": {
+      "name": "Charles Leclerc",
+      "races_entered": 24,
+      "races_classified": 23,
+      "non_classified": 1,
+      "gp_points": 327.0,
+      "sprint_points": 29.0,
+      "total_points": 356.0,
+      "wins": 3,
+      "avg_classified_finish": 3.91,
+      "avg_grid": 5.42,
+      "championship_standing": 3
+    },
+    "sainz": {
+      "name": "Carlos Sainz",
+      "races_entered": 23,
+      "races_classified": 20,
+      "non_classified": 3,
+      "gp_points": 262.0,
+      "sprint_points": 28.0,
+      "total_points": 290.0,
+      "wins": 2,
+      "avg_classified_finish": 4.05,
+      "avg_grid": 5.7,
+      "championship_standing": 5
+    },
+    "russell": {
+      "name": "George Russell",
+      "races_entered": 24,
+      "races_classified": 21,
+      "non_classified": 3,
+      "gp_points": 226.0,
+      "sprint_points": 19.0,
+      "total_points": 245.0,
+      "wins": 2,
+      "avg_classified_finish": 5.05,
+      "avg_grid": 5.63,
+      "championship_standing": 6
+    },
+    "hamilton": {
+      "name": "Lewis Hamilton",
+      "races_entered": 24,
+      "races_classified": 22,
+      "non_classified": 2,
+      "gp_points": 207.0,
+      "sprint_points": 16.0,
+      "total_points": 223.0,
+      "wins": 2,
+      "avg_classified_finish": 5.86,
+      "avg_grid": 8.83,
+      "championship_standing": 7
+    },
+    "piastri": {
+      "name": "Oscar Piastri",
+      "races_entered": 24,
+      "races_classified": 24,
+      "non_classified": 0,
+      "gp_points": 265.0,
+      "sprint_points": 27.0,
+      "total_points": 292.0,
+      "wins": 2,
+      "avg_classified_finish": 5.13,
+      "avg_grid": 5.42,
+      "championship_standing": 4
+    },
+    "bearman": {
+      "name": "Oliver Bearman",
+      "races_entered": 3,
+      "races_classified": 3,
+      "non_classified": 0,
+      "gp_points": 7.0,
+      "sprint_points": 0.0,
+      "total_points": 7.0,
+      "wins": 0,
+      "avg_classified_finish": 9.67,
+      "avg_grid": 12.0,
+      "championship_standing": 18
+    },
+    "lawson": {
+      "name": "Liam Lawson",
+      "races_entered": 6,
+      "races_classified": 5,
+      "non_classified": 1,
+      "gp_points": 4.0,
+      "sprint_points": 0.0,
+      "total_points": 4.0,
+      "wins": 0,
+      "avg_classified_finish": 12.8,
+      "avg_grid": 13.17,
+      "championship_standing": 21
+    },
+    "antonelli": null,
+    "colapinto": {
+      "name": "Franco Colapinto",
+      "races_entered": 9,
+      "races_classified": 6,
+      "non_classified": 3,
+      "gp_points": 5.0,
+      "sprint_points": 0.0,
+      "total_points": 5.0,
+      "wins": 0,
+      "avg_classified_finish": 11.17,
+      "avg_grid": 16.0,
+      "championship_standing": 19
+    }
+  },
+  "constructor_aggregates": {
+    "alpine": {
+      "name": "Alpine F1 Team",
+      "races_entered": 24,
+      "gp_points": 63.0,
+      "sprint_points": 2.0,
+      "total_points": 65.0,
+      "wins": 0,
+      "championship_standing": 6
+    },
+    "aston_martin": {
+      "name": "Aston Martin",
+      "races_entered": 24,
+      "gp_points": 94.0,
+      "sprint_points": 0.0,
+      "total_points": 94.0,
+      "wins": 0,
+      "championship_standing": 5
+    },
+    "ferrari": {
+      "name": "Ferrari",
+      "races_entered": 24,
+      "gp_points": 595.0,
+      "sprint_points": 57.0,
+      "total_points": 652.0,
+      "wins": 5,
+      "championship_standing": 2
+    },
+    "haas": {
+      "name": "Haas F1 Team",
+      "races_entered": 24,
+      "gp_points": 51.0,
+      "sprint_points": 7.0,
+      "total_points": 58.0,
+      "wins": 0,
+      "championship_standing": 7
+    },
+    "mclaren": {
+      "name": "McLaren",
+      "races_entered": 24,
+      "gp_points": 609.0,
+      "sprint_points": 57.0,
+      "total_points": 666.0,
+      "wins": 6,
+      "championship_standing": 1
+    },
+    "mercedes": {
+      "name": "Mercedes",
+      "races_entered": 24,
+      "gp_points": 433.0,
+      "sprint_points": 35.0,
+      "total_points": 468.0,
+      "wins": 4,
+      "championship_standing": 4
+    },
+    "rb": {
+      "name": "RB F1 Team",
+      "races_entered": 24,
+      "gp_points": 40.0,
+      "sprint_points": 6.0,
+      "total_points": 46.0,
+      "wins": 0,
+      "championship_standing": 8
+    },
+    "red_bull": {
+      "name": "Red Bull",
+      "races_entered": 24,
+      "gp_points": 537.0,
+      "sprint_points": 52.0,
+      "total_points": 589.0,
+      "wins": 9,
+      "championship_standing": 3
+    },
+    "sauber": {
+      "name": "Sauber",
+      "races_entered": 24,
+      "gp_points": 4.0,
+      "sprint_points": 0.0,
+      "total_points": 4.0,
+      "wins": 0,
+      "championship_standing": 10
+    },
+    "williams": {
+      "name": "Williams",
+      "races_entered": 24,
+      "gp_points": 17.0,
+      "sprint_points": 0.0,
+      "total_points": 17.0,
+      "wins": 0,
+      "championship_standing": 9
+    }
+  },
+  "h2h": {
+    "red_bull": {
+      "driver_a": "max_verstappen",
+      "driver_b": "perez",
+      "quali_a_ahead": 23,
+      "quali_b_ahead": 1,
+      "quali_comparable": 24,
+      "race_a_ahead": 18,
+      "race_b_ahead": 0,
+      "race_comparable": 18
+    },
+    "mclaren": {
+      "driver_a": "norris",
+      "driver_b": "piastri",
+      "quali_a_ahead": 20,
+      "quali_b_ahead": 4,
+      "quali_comparable": 24,
+      "race_a_ahead": 16,
+      "race_b_ahead": 8,
+      "race_comparable": 24
+    },
+    "ferrari": {
+      "driver_a": "leclerc",
+      "driver_b": "sainz",
+      "quali_a_ahead": 14,
+      "quali_b_ahead": 9,
+      "quali_comparable": 23,
+      "race_a_ahead": 12,
+      "race_b_ahead": 8,
+      "race_comparable": 20
+    },
+    "mercedes": {
+      "driver_a": "hamilton",
+      "driver_b": "russell",
+      "quali_a_ahead": 5,
+      "quali_b_ahead": 19,
+      "quali_comparable": 24,
+      "race_a_ahead": 7,
+      "race_b_ahead": 13,
+      "race_comparable": 20
+    },
+    "aston_martin": {
+      "driver_a": "alonso",
+      "driver_b": "stroll",
+      "quali_a_ahead": 19,
+      "quali_b_ahead": 5,
+      "quali_comparable": 24,
+      "race_a_ahead": 14,
+      "race_b_ahead": 5,
+      "race_comparable": 19
+    },
+    "alpine": {
+      "driver_a": "gasly",
+      "driver_b": "ocon",
+      "quali_a_ahead": 11,
+      "quali_b_ahead": 12,
+      "quali_comparable": 23,
+      "race_a_ahead": 8,
+      "race_b_ahead": 9,
+      "race_comparable": 17
+    },
+    "haas": {
+      "driver_a": "hulkenberg",
+      "driver_b": "kevin_magnussen",
+      "quali_a_ahead": 16,
+      "quali_b_ahead": 6,
+      "quali_comparable": 22,
+      "race_a_ahead": 15,
+      "race_b_ahead": 4,
+      "race_comparable": 19
+    },
+    "rb": {
+      "driver_a": "ricciardo",
+      "driver_b": "tsunoda",
+      "quali_a_ahead": 6,
+      "quali_b_ahead": 12,
+      "quali_comparable": 18,
+      "race_a_ahead": 6,
+      "race_b_ahead": 8,
+      "race_comparable": 14
+    },
+    "williams": {
+      "driver_a": "albon",
+      "driver_b": "colapinto",
+      "quali_a_ahead": 7,
+      "quali_b_ahead": 2,
+      "quali_comparable": 9,
+      "race_a_ahead": 2,
+      "race_b_ahead": 1,
+      "race_comparable": 3
+    },
+    "sauber": {
+      "driver_a": "bottas",
+      "driver_b": "zhou",
+      "quali_a_ahead": 21,
+      "quali_b_ahead": 3,
+      "quali_comparable": 24,
+      "race_a_ahead": 12,
+      "race_b_ahead": 8,
+      "race_comparable": 20
+    }
+  },
+  "rolling": {
+    "max_verstappen_last3": {
+      "avg_classified_finish": 4.0,
+      "gp_points": 43.0,
+      "sprint_points": 1.0,
+      "total_points": 44.0,
+      "rounds": 3
+    },
+    "max_verstappen_last5": {
+      "avg_classified_finish": 3.8,
+      "gp_points": 77.0,
+      "sprint_points": 6.0,
+      "total_points": 83.0,
+      "rounds": 5
+    },
+    "norris_last3": {
+      "avg_classified_finish": 5.67,
+      "gp_points": 36.0,
+      "sprint_points": 7.0,
+      "total_points": 43.0,
+      "rounds": 3
+    },
+    "norris_last5": {
+      "avg_classified_finish": 5.0,
+      "gp_points": 62.0,
+      "sprint_points": 15.0,
+      "total_points": 77.0,
+      "rounds": 5
+    },
+    "leclerc_last3": {
+      "avg_classified_finish": 3.0,
+      "gp_points": 45.0,
+      "sprint_points": 4.0,
+      "total_points": 49.0,
+      "rounds": 3
+    },
+    "leclerc_last5": {
+      "avg_classified_finish": 3.4,
+      "gp_points": 71.0,
+      "sprint_points": 10.0,
+      "total_points": 81.0,
+      "rounds": 5
+    },
+    "piastri_last3": {
+      "avg_classified_finish": 6.67,
+      "gp_points": 22.0,
+      "sprint_points": 8.0,
+      "total_points": 30.0,
+      "rounds": 3
+    },
+    "piastri_last5": {
+      "avg_classified_finish": 7.2,
+      "gp_points": 30.0,
+      "sprint_points": 15.0,
+      "total_points": 45.0,
+      "rounds": 5
+    },
+    "russell_last3": {
+      "avg_classified_finish": 3.33,
+      "gp_points": 47.0,
+      "sprint_points": 6.0,
+      "total_points": 53.0,
+      "rounds": 3
+    },
+    "russell_last5": {
+      "avg_classified_finish": 3.8,
+      "gp_points": 69.0,
+      "sprint_points": 9.0,
+      "total_points": 78.0,
+      "rounds": 5
+    },
+    "hamilton_last3": {
+      "avg_classified_finish": 6.0,
+      "gp_points": 30.0,
+      "sprint_points": 3.0,
+      "total_points": 33.0,
+      "rounds": 3
+    },
+    "hamilton_last5": {
+      "avg_classified_finish": 6.4,
+      "gp_points": 43.0,
+      "sprint_points": 3.0,
+      "total_points": 46.0,
+      "rounds": 5
+    }
+  },
+  "points_rates": {
+    "max_verstappen": {
+      "starts": 24,
+      "rounds": 24,
+      "gp_points": 399.0,
+      "sprint_points": 38.0,
+      "total_points": 437.0,
+      "gp_points_per_start": 16.62,
+      "total_points_per_round": 18.21
+    },
+    "norris": {
+      "starts": 24,
+      "rounds": 24,
+      "gp_points": 344.0,
+      "sprint_points": 30.0,
+      "total_points": 374.0,
+      "gp_points_per_start": 14.33,
+      "total_points_per_round": 15.58
+    },
+    "leclerc": {
+      "starts": 24,
+      "rounds": 24,
+      "gp_points": 327.0,
+      "sprint_points": 29.0,
+      "total_points": 356.0,
+      "gp_points_per_start": 13.62,
+      "total_points_per_round": 14.83
+    },
+    "piastri": {
+      "starts": 24,
+      "rounds": 24,
+      "gp_points": 265.0,
+      "sprint_points": 27.0,
+      "total_points": 292.0,
+      "gp_points_per_start": 11.04,
+      "total_points_per_round": 12.17
+    },
+    "russell": {
+      "starts": 24,
+      "rounds": 24,
+      "gp_points": 226.0,
+      "sprint_points": 19.0,
+      "total_points": 245.0,
+      "gp_points_per_start": 9.42,
+      "total_points_per_round": 10.21
+    },
+    "hamilton": {
+      "starts": 24,
+      "rounds": 24,
+      "gp_points": 207.0,
+      "sprint_points": 16.0,
+      "total_points": 223.0,
+      "gp_points_per_start": 8.62,
+      "total_points_per_round": 9.29
+    },
+    "sainz": {
+      "starts": 23,
+      "rounds": 23,
+      "gp_points": 262.0,
+      "sprint_points": 28.0,
+      "total_points": 290.0,
+      "gp_points_per_start": 11.39,
+      "total_points_per_round": 12.61
+    },
+    "perez": {
+      "starts": 24,
+      "rounds": 24,
+      "gp_points": 138.0,
+      "sprint_points": 14.0,
+      "total_points": 152.0,
+      "gp_points_per_start": 5.75,
+      "total_points_per_round": 6.33
+    }
+  },
+  "special_cases": {
+    "bearman_entries": 3,
+    "lawson_entries": 6,
+    "antonelli_entries": 0,
+    "colapinto_entries": 9,
+    "colapinto_first_round": 16,
+    "dsq_count": 2,
+    "dsq_details": [
+      [
+        14,
+        "russell",
+        "20",
+        "Disqualified"
+      ],
+      [
+        21,
+        "hulkenberg",
+        "D",
+        "Disqualified"
+      ]
+    ],
+    "dns_count": 3,
+    "dns_details": [
+      [
+        12,
+        "gasly",
+        "W",
+        "Did not start"
+      ],
+      [
+        21,
+        "albon",
+        "W",
+        "Did not start"
+      ],
+      [
+        21,
+        "stroll",
+        "W",
+        "Did not start"
+      ]
+    ]
+  }
+}

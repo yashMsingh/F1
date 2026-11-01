@@ -1,0 +1,18 @@
+{
+  "table_counts": {
+    "seasons": 1,
+    "circuits": 15,
+    "constructors": 10,
+    "drivers": 23,
+    "races": 15,
+    "race_results": 299,
+    "qualifying_results": 299,
+    "sprint_results": 60,
+    "pit_stops": 544,
+    "lap_times": 17104,
+    "driver_standings": 314,
+    "constructor_standings": 150,
+    "etl_log": 20
+  },
+  "races_count": 15
+}

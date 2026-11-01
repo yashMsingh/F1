@@ -1,0 +1,2456 @@
+{
+  "total_checks": 271,
+  "matches": 271,
+  "discrepancies": [],
+  "all_checks": [
+    {
+      "category": "Driver Aggregate",
+      "entity": "max_verstappen",
+      "metric": "races_entered",
+      "sql_val": 24,
+      "app_val": 24,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "max_verstappen",
+      "metric": "races_classified",
+      "sql_val": 23,
+      "app_val": 23,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "max_verstappen",
+      "metric": "dnf_count",
+      "sql_val": 1,
+      "app_val": 1,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "max_verstappen",
+      "metric": "gp_points",
+      "sql_val": 399.0,
+      "app_val": 399.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "max_verstappen",
+      "metric": "sprint_points",
+      "sql_val": 38.0,
+      "app_val": 38.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "max_verstappen",
+      "metric": "total_points",
+      "sql_val": 437.0,
+      "app_val": 437.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "max_verstappen",
+      "metric": "wins",
+      "sql_val": 9,
+      "app_val": 9,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "max_verstappen",
+      "metric": "avg_classified_finish",
+      "sql_val": 2.96,
+      "app_val": 2.96,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "max_verstappen",
+      "metric": "avg_grid",
+      "sql_val": 3.54,
+      "app_val": 3.54,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "max_verstappen",
+      "metric": "championship_standing",
+      "sql_val": 1,
+      "app_val": 1,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "perez",
+      "metric": "races_entered",
+      "sql_val": 24,
+      "app_val": 24,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "perez",
+      "metric": "races_classified",
+      "sql_val": 19,
+      "app_val": 19,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "perez",
+      "metric": "dnf_count",
+      "sql_val": 5,
+      "app_val": 5,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "perez",
+      "metric": "gp_points",
+      "sql_val": 138.0,
+      "app_val": 138.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "perez",
+      "metric": "sprint_points",
+      "sql_val": 14.0,
+      "app_val": 14.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "perez",
+      "metric": "total_points",
+      "sql_val": 152.0,
+      "app_val": 152.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "perez",
+      "metric": "wins",
+      "sql_val": 0,
+      "app_val": 0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "perez",
+      "metric": "avg_classified_finish",
+      "sql_val": 7.42,
+      "app_val": 7.42,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "perez",
+      "metric": "avg_grid",
+      "sql_val": 9.38,
+      "app_val": 9.38,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "perez",
+      "metric": "championship_standing",
+      "sql_val": 8,
+      "app_val": 8,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "norris",
+      "metric": "races_entered",
+      "sql_val": 24,
+      "app_val": 24,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "norris",
+      "metric": "races_classified",
+      "sql_val": 24,
+      "app_val": 24,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "norris",
+      "metric": "dnf_count",
+      "sql_val": 0,
+      "app_val": 0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "norris",
+      "metric": "gp_points",
+      "sql_val": 344.0,
+      "app_val": 344.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "norris",
+      "metric": "sprint_points",
+      "sql_val": 30.0,
+      "app_val": 30.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "norris",
+      "metric": "total_points",
+      "sql_val": 374.0,
+      "app_val": 374.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "norris",
+      "metric": "wins",
+      "sql_val": 4,
+      "app_val": 4,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "norris",
+      "metric": "avg_classified_finish",
+      "sql_val": 4.29,
+      "app_val": 4.29,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "norris",
+      "metric": "avg_grid",
+      "sql_val": 3.38,
+      "app_val": 3.38,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "norris",
+      "metric": "championship_standing",
+      "sql_val": 2,
+      "app_val": 2,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "leclerc",
+      "metric": "races_entered",
+      "sql_val": 24,
+      "app_val": 24,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "leclerc",
+      "metric": "races_classified",
+      "sql_val": 23,
+      "app_val": 23,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "leclerc",
+      "metric": "dnf_count",
+      "sql_val": 1,
+      "app_val": 1,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "leclerc",
+      "metric": "gp_points",
+      "sql_val": 327.0,
+      "app_val": 327.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "leclerc",
+      "metric": "sprint_points",
+      "sql_val": 29.0,
+      "app_val": 29.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "leclerc",
+      "metric": "total_points",
+      "sql_val": 356.0,
+      "app_val": 356.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "leclerc",
+      "metric": "wins",
+      "sql_val": 3,
+      "app_val": 3,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "leclerc",
+      "metric": "avg_classified_finish",
+      "sql_val": 3.91,
+      "app_val": 3.91,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "leclerc",
+      "metric": "avg_grid",
+      "sql_val": 5.42,
+      "app_val": 5.42,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "leclerc",
+      "metric": "championship_standing",
+      "sql_val": 3,
+      "app_val": 3,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "sainz",
+      "metric": "races_entered",
+      "sql_val": 23,
+      "app_val": 23,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "sainz",
+      "metric": "races_classified",
+      "sql_val": 20,
+      "app_val": 20,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "sainz",
+      "metric": "dnf_count",
+      "sql_val": 3,
+      "app_val": 3,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "sainz",
+      "metric": "gp_points",
+      "sql_val": 262.0,
+      "app_val": 262.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "sainz",
+      "metric": "sprint_points",
+      "sql_val": 28.0,
+      "app_val": 28.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "sainz",
+      "metric": "total_points",
+      "sql_val": 290.0,
+      "app_val": 290.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "sainz",
+      "metric": "wins",
+      "sql_val": 2,
+      "app_val": 2,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "sainz",
+      "metric": "avg_classified_finish",
+      "sql_val": 4.05,
+      "app_val": 4.05,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "sainz",
+      "metric": "avg_grid",
+      "sql_val": 5.7,
+      "app_val": 5.7,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "sainz",
+      "metric": "championship_standing",
+      "sql_val": 5,
+      "app_val": 5,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "russell",
+      "metric": "races_entered",
+      "sql_val": 24,
+      "app_val": 24,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "russell",
+      "metric": "races_classified",
+      "sql_val": 21,
+      "app_val": 21,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "russell",
+      "metric": "dnf_count",
+      "sql_val": 3,
+      "app_val": 3,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "russell",
+      "metric": "gp_points",
+      "sql_val": 226.0,
+      "app_val": 226.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "russell",
+      "metric": "sprint_points",
+      "sql_val": 19.0,
+      "app_val": 19.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "russell",
+      "metric": "total_points",
+      "sql_val": 245.0,
+      "app_val": 245.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "russell",
+      "metric": "wins",
+      "sql_val": 2,
+      "app_val": 2,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "russell",
+      "metric": "avg_classified_finish",
+      "sql_val": 5.05,
+      "app_val": 5.05,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "russell",
+      "metric": "avg_grid",
+      "sql_val": 5.63,
+      "app_val": 5.62,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "russell",
+      "metric": "championship_standing",
+      "sql_val": 6,
+      "app_val": 6,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "hamilton",
+      "metric": "races_entered",
+      "sql_val": 24,
+      "app_val": 24,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "hamilton",
+      "metric": "races_classified",
+      "sql_val": 22,
+      "app_val": 22,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "hamilton",
+      "metric": "dnf_count",
+      "sql_val": 2,
+      "app_val": 2,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "hamilton",
+      "metric": "gp_points",
+      "sql_val": 207.0,
+      "app_val": 207.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "hamilton",
+      "metric": "sprint_points",
+      "sql_val": 16.0,
+      "app_val": 16.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "hamilton",
+      "metric": "total_points",
+      "sql_val": 223.0,
+      "app_val": 223.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "hamilton",
+      "metric": "wins",
+      "sql_val": 2,
+      "app_val": 2,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "hamilton",
+      "metric": "avg_classified_finish",
+      "sql_val": 5.86,
+      "app_val": 5.86,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "hamilton",
+      "metric": "avg_grid",
+      "sql_val": 8.83,
+      "app_val": 8.83,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "hamilton",
+      "metric": "championship_standing",
+      "sql_val": 7,
+      "app_val": 7,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "piastri",
+      "metric": "races_entered",
+      "sql_val": 24,
+      "app_val": 24,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "piastri",
+      "metric": "races_classified",
+      "sql_val": 24,
+      "app_val": 24,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "piastri",
+      "metric": "dnf_count",
+      "sql_val": 0,
+      "app_val": 0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "piastri",
+      "metric": "gp_points",
+      "sql_val": 265.0,
+      "app_val": 265.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "piastri",
+      "metric": "sprint_points",
+      "sql_val": 27.0,
+      "app_val": 27.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "piastri",
+      "metric": "total_points",
+      "sql_val": 292.0,
+      "app_val": 292.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "piastri",
+      "metric": "wins",
+      "sql_val": 2,
+      "app_val": 2,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "piastri",
+      "metric": "avg_classified_finish",
+      "sql_val": 5.13,
+      "app_val": 5.12,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "piastri",
+      "metric": "avg_grid",
+      "sql_val": 5.42,
+      "app_val": 5.42,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "piastri",
+      "metric": "championship_standing",
+      "sql_val": 4,
+      "app_val": 4,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "bearman",
+      "metric": "races_entered",
+      "sql_val": 3,
+      "app_val": 3,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "bearman",
+      "metric": "races_classified",
+      "sql_val": 3,
+      "app_val": 3,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "bearman",
+      "metric": "dnf_count",
+      "sql_val": 0,
+      "app_val": 0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "bearman",
+      "metric": "gp_points",
+      "sql_val": 7.0,
+      "app_val": 7.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "bearman",
+      "metric": "sprint_points",
+      "sql_val": 0.0,
+      "app_val": 0.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "bearman",
+      "metric": "total_points",
+      "sql_val": 7.0,
+      "app_val": 7.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "bearman",
+      "metric": "wins",
+      "sql_val": 0,
+      "app_val": 0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "bearman",
+      "metric": "avg_classified_finish",
+      "sql_val": 9.67,
+      "app_val": 9.67,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "bearman",
+      "metric": "avg_grid",
+      "sql_val": 12.0,
+      "app_val": 12.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "bearman",
+      "metric": "championship_standing",
+      "sql_val": 18,
+      "app_val": 18,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "lawson",
+      "metric": "races_entered",
+      "sql_val": 6,
+      "app_val": 6,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "lawson",
+      "metric": "races_classified",
+      "sql_val": 5,
+      "app_val": 5,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "lawson",
+      "metric": "dnf_count",
+      "sql_val": 1,
+      "app_val": 1,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "lawson",
+      "metric": "gp_points",
+      "sql_val": 4.0,
+      "app_val": 4.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "lawson",
+      "metric": "sprint_points",
+      "sql_val": 0.0,
+      "app_val": 0.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "lawson",
+      "metric": "total_points",
+      "sql_val": 4.0,
+      "app_val": 4.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "lawson",
+      "metric": "wins",
+      "sql_val": 0,
+      "app_val": 0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "lawson",
+      "metric": "avg_classified_finish",
+      "sql_val": 12.8,
+      "app_val": 12.8,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "lawson",
+      "metric": "avg_grid",
+      "sql_val": 13.17,
+      "app_val": 13.17,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "lawson",
+      "metric": "championship_standing",
+      "sql_val": 21,
+      "app_val": 21,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "antonelli",
+      "metric": "existence",
+      "sql_val": null,
+      "app_val": null,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "colapinto",
+      "metric": "races_entered",
+      "sql_val": 9,
+      "app_val": 9,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "colapinto",
+      "metric": "races_classified",
+      "sql_val": 6,
+      "app_val": 6,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "colapinto",
+      "metric": "dnf_count",
+      "sql_val": 3,
+      "app_val": 3,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "colapinto",
+      "metric": "gp_points",
+      "sql_val": 5.0,
+      "app_val": 5.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "colapinto",
+      "metric": "sprint_points",
+      "sql_val": 0.0,
+      "app_val": 0.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "colapinto",
+      "metric": "total_points",
+      "sql_val": 5.0,
+      "app_val": 5.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "colapinto",
+      "metric": "wins",
+      "sql_val": 0,
+      "app_val": 0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "colapinto",
+      "metric": "avg_classified_finish",
+      "sql_val": 11.17,
+      "app_val": 11.17,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "colapinto",
+      "metric": "avg_grid",
+      "sql_val": 16.0,
+      "app_val": 16.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Driver Aggregate",
+      "entity": "colapinto",
+      "metric": "championship_standing",
+      "sql_val": 19,
+      "app_val": 19,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "alpine",
+      "metric": "gp_points",
+      "sql_val": 63.0,
+      "app_val": 63.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "alpine",
+      "metric": "sprint_points",
+      "sql_val": 2.0,
+      "app_val": 2.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "alpine",
+      "metric": "total_points",
+      "sql_val": 65.0,
+      "app_val": 65.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "alpine",
+      "metric": "wins",
+      "sql_val": 0,
+      "app_val": 0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "alpine",
+      "metric": "championship_standing",
+      "sql_val": 6,
+      "app_val": 6,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "alpine",
+      "metric": "driver_contributions_sum",
+      "sql_val": 65.0,
+      "app_val": 65.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "aston_martin",
+      "metric": "gp_points",
+      "sql_val": 94.0,
+      "app_val": 94.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "aston_martin",
+      "metric": "sprint_points",
+      "sql_val": 0.0,
+      "app_val": 0.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "aston_martin",
+      "metric": "total_points",
+      "sql_val": 94.0,
+      "app_val": 94.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "aston_martin",
+      "metric": "wins",
+      "sql_val": 0,
+      "app_val": 0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "aston_martin",
+      "metric": "championship_standing",
+      "sql_val": 5,
+      "app_val": 5,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "aston_martin",
+      "metric": "driver_contributions_sum",
+      "sql_val": 94.0,
+      "app_val": 94.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "ferrari",
+      "metric": "gp_points",
+      "sql_val": 595.0,
+      "app_val": 595.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "ferrari",
+      "metric": "sprint_points",
+      "sql_val": 57.0,
+      "app_val": 57.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "ferrari",
+      "metric": "total_points",
+      "sql_val": 652.0,
+      "app_val": 652.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "ferrari",
+      "metric": "wins",
+      "sql_val": 5,
+      "app_val": 5,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "ferrari",
+      "metric": "championship_standing",
+      "sql_val": 2,
+      "app_val": 2,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "ferrari",
+      "metric": "driver_contributions_sum",
+      "sql_val": 652.0,
+      "app_val": 652.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "haas",
+      "metric": "gp_points",
+      "sql_val": 51.0,
+      "app_val": 51.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "haas",
+      "metric": "sprint_points",
+      "sql_val": 7.0,
+      "app_val": 7.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "haas",
+      "metric": "total_points",
+      "sql_val": 58.0,
+      "app_val": 58.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "haas",
+      "metric": "wins",
+      "sql_val": 0,
+      "app_val": 0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "haas",
+      "metric": "championship_standing",
+      "sql_val": 7,
+      "app_val": 7,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "haas",
+      "metric": "driver_contributions_sum",
+      "sql_val": 58.0,
+      "app_val": 58.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "mclaren",
+      "metric": "gp_points",
+      "sql_val": 609.0,
+      "app_val": 609.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "mclaren",
+      "metric": "sprint_points",
+      "sql_val": 57.0,
+      "app_val": 57.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "mclaren",
+      "metric": "total_points",
+      "sql_val": 666.0,
+      "app_val": 666.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "mclaren",
+      "metric": "wins",
+      "sql_val": 6,
+      "app_val": 6,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "mclaren",
+      "metric": "championship_standing",
+      "sql_val": 1,
+      "app_val": 1,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "mclaren",
+      "metric": "driver_contributions_sum",
+      "sql_val": 666.0,
+      "app_val": 666.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "mercedes",
+      "metric": "gp_points",
+      "sql_val": 433.0,
+      "app_val": 433.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "mercedes",
+      "metric": "sprint_points",
+      "sql_val": 35.0,
+      "app_val": 35.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "mercedes",
+      "metric": "total_points",
+      "sql_val": 468.0,
+      "app_val": 468.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "mercedes",
+      "metric": "wins",
+      "sql_val": 4,
+      "app_val": 4,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "mercedes",
+      "metric": "championship_standing",
+      "sql_val": 4,
+      "app_val": 4,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "mercedes",
+      "metric": "driver_contributions_sum",
+      "sql_val": 468.0,
+      "app_val": 468.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "rb",
+      "metric": "gp_points",
+      "sql_val": 40.0,
+      "app_val": 40.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "rb",
+      "metric": "sprint_points",
+      "sql_val": 6.0,
+      "app_val": 6.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "rb",
+      "metric": "total_points",
+      "sql_val": 46.0,
+      "app_val": 46.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "rb",
+      "metric": "wins",
+      "sql_val": 0,
+      "app_val": 0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "rb",
+      "metric": "championship_standing",
+      "sql_val": 8,
+      "app_val": 8,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "rb",
+      "metric": "driver_contributions_sum",
+      "sql_val": 46.0,
+      "app_val": 46.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "red_bull",
+      "metric": "gp_points",
+      "sql_val": 537.0,
+      "app_val": 537.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "red_bull",
+      "metric": "sprint_points",
+      "sql_val": 52.0,
+      "app_val": 52.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "red_bull",
+      "metric": "total_points",
+      "sql_val": 589.0,
+      "app_val": 589.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "red_bull",
+      "metric": "wins",
+      "sql_val": 9,
+      "app_val": 9,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "red_bull",
+      "metric": "championship_standing",
+      "sql_val": 3,
+      "app_val": 3,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "red_bull",
+      "metric": "driver_contributions_sum",
+      "sql_val": 589.0,
+      "app_val": 589.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "sauber",
+      "metric": "gp_points",
+      "sql_val": 4.0,
+      "app_val": 4.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "sauber",
+      "metric": "sprint_points",
+      "sql_val": 0.0,
+      "app_val": 0.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "sauber",
+      "metric": "total_points",
+      "sql_val": 4.0,
+      "app_val": 4.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "sauber",
+      "metric": "wins",
+      "sql_val": 0,
+      "app_val": 0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "sauber",
+      "metric": "championship_standing",
+      "sql_val": 10,
+      "app_val": 10,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "sauber",
+      "metric": "driver_contributions_sum",
+      "sql_val": 4.0,
+      "app_val": 4.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "williams",
+      "metric": "gp_points",
+      "sql_val": 17.0,
+      "app_val": 17.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "williams",
+      "metric": "sprint_points",
+      "sql_val": 0.0,
+      "app_val": 0.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "williams",
+      "metric": "total_points",
+      "sql_val": 17.0,
+      "app_val": 17.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "williams",
+      "metric": "wins",
+      "sql_val": 0,
+      "app_val": 0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "williams",
+      "metric": "championship_standing",
+      "sql_val": 9,
+      "app_val": 9,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Constructor Aggregate",
+      "entity": "williams",
+      "metric": "driver_contributions_sum",
+      "sql_val": 17.0,
+      "app_val": 17.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "red_bull:max_verstappen:perez",
+      "metric": "quali_a_ahead",
+      "sql_val": 23,
+      "app_val": 23,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "red_bull:max_verstappen:perez",
+      "metric": "quali_b_ahead",
+      "sql_val": 1,
+      "app_val": 1,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "red_bull:max_verstappen:perez",
+      "metric": "quali_comparable",
+      "sql_val": 24,
+      "app_val": 24,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "red_bull:max_verstappen:perez",
+      "metric": "race_a_ahead",
+      "sql_val": 18,
+      "app_val": 18,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "red_bull:max_verstappen:perez",
+      "metric": "race_b_ahead",
+      "sql_val": 0,
+      "app_val": 0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "red_bull:max_verstappen:perez",
+      "metric": "race_comparable",
+      "sql_val": 18,
+      "app_val": 18,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "mclaren:norris:piastri",
+      "metric": "quali_a_ahead",
+      "sql_val": 20,
+      "app_val": 20,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "mclaren:norris:piastri",
+      "metric": "quali_b_ahead",
+      "sql_val": 4,
+      "app_val": 4,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "mclaren:norris:piastri",
+      "metric": "quali_comparable",
+      "sql_val": 24,
+      "app_val": 24,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "mclaren:norris:piastri",
+      "metric": "race_a_ahead",
+      "sql_val": 16,
+      "app_val": 16,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "mclaren:norris:piastri",
+      "metric": "race_b_ahead",
+      "sql_val": 8,
+      "app_val": 8,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "mclaren:norris:piastri",
+      "metric": "race_comparable",
+      "sql_val": 24,
+      "app_val": 24,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "ferrari:leclerc:sainz",
+      "metric": "quali_a_ahead",
+      "sql_val": 14,
+      "app_val": 14,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "ferrari:leclerc:sainz",
+      "metric": "quali_b_ahead",
+      "sql_val": 9,
+      "app_val": 9,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "ferrari:leclerc:sainz",
+      "metric": "quali_comparable",
+      "sql_val": 23,
+      "app_val": 23,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "ferrari:leclerc:sainz",
+      "metric": "race_a_ahead",
+      "sql_val": 12,
+      "app_val": 12,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "ferrari:leclerc:sainz",
+      "metric": "race_b_ahead",
+      "sql_val": 8,
+      "app_val": 8,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "ferrari:leclerc:sainz",
+      "metric": "race_comparable",
+      "sql_val": 20,
+      "app_val": 20,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "mercedes:hamilton:russell",
+      "metric": "quali_a_ahead",
+      "sql_val": 5,
+      "app_val": 5,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "mercedes:hamilton:russell",
+      "metric": "quali_b_ahead",
+      "sql_val": 19,
+      "app_val": 19,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "mercedes:hamilton:russell",
+      "metric": "quali_comparable",
+      "sql_val": 24,
+      "app_val": 24,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "mercedes:hamilton:russell",
+      "metric": "race_a_ahead",
+      "sql_val": 7,
+      "app_val": 7,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "mercedes:hamilton:russell",
+      "metric": "race_b_ahead",
+      "sql_val": 13,
+      "app_val": 13,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "mercedes:hamilton:russell",
+      "metric": "race_comparable",
+      "sql_val": 20,
+      "app_val": 20,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "aston_martin:alonso:stroll",
+      "metric": "quali_a_ahead",
+      "sql_val": 19,
+      "app_val": 19,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "aston_martin:alonso:stroll",
+      "metric": "quali_b_ahead",
+      "sql_val": 5,
+      "app_val": 5,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "aston_martin:alonso:stroll",
+      "metric": "quali_comparable",
+      "sql_val": 24,
+      "app_val": 24,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "aston_martin:alonso:stroll",
+      "metric": "race_a_ahead",
+      "sql_val": 14,
+      "app_val": 14,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "aston_martin:alonso:stroll",
+      "metric": "race_b_ahead",
+      "sql_val": 5,
+      "app_val": 5,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "aston_martin:alonso:stroll",
+      "metric": "race_comparable",
+      "sql_val": 19,
+      "app_val": 19,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "alpine:gasly:ocon",
+      "metric": "quali_a_ahead",
+      "sql_val": 11,
+      "app_val": 11,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "alpine:gasly:ocon",
+      "metric": "quali_b_ahead",
+      "sql_val": 12,
+      "app_val": 12,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "alpine:gasly:ocon",
+      "metric": "quali_comparable",
+      "sql_val": 23,
+      "app_val": 23,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "alpine:gasly:ocon",
+      "metric": "race_a_ahead",
+      "sql_val": 8,
+      "app_val": 8,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "alpine:gasly:ocon",
+      "metric": "race_b_ahead",
+      "sql_val": 9,
+      "app_val": 9,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "alpine:gasly:ocon",
+      "metric": "race_comparable",
+      "sql_val": 17,
+      "app_val": 17,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "haas:hulkenberg:kevin_magnussen",
+      "metric": "quali_a_ahead",
+      "sql_val": 16,
+      "app_val": 16,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "haas:hulkenberg:kevin_magnussen",
+      "metric": "quali_b_ahead",
+      "sql_val": 6,
+      "app_val": 6,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "haas:hulkenberg:kevin_magnussen",
+      "metric": "quali_comparable",
+      "sql_val": 22,
+      "app_val": 22,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "haas:hulkenberg:kevin_magnussen",
+      "metric": "race_a_ahead",
+      "sql_val": 15,
+      "app_val": 15,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "haas:hulkenberg:kevin_magnussen",
+      "metric": "race_b_ahead",
+      "sql_val": 4,
+      "app_val": 4,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "haas:hulkenberg:kevin_magnussen",
+      "metric": "race_comparable",
+      "sql_val": 19,
+      "app_val": 19,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "rb:ricciardo:tsunoda",
+      "metric": "quali_a_ahead",
+      "sql_val": 6,
+      "app_val": 6,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "rb:ricciardo:tsunoda",
+      "metric": "quali_b_ahead",
+      "sql_val": 12,
+      "app_val": 12,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "rb:ricciardo:tsunoda",
+      "metric": "quali_comparable",
+      "sql_val": 18,
+      "app_val": 18,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "rb:ricciardo:tsunoda",
+      "metric": "race_a_ahead",
+      "sql_val": 6,
+      "app_val": 6,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "rb:ricciardo:tsunoda",
+      "metric": "race_b_ahead",
+      "sql_val": 8,
+      "app_val": 8,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "rb:ricciardo:tsunoda",
+      "metric": "race_comparable",
+      "sql_val": 14,
+      "app_val": 14,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "williams:albon:colapinto",
+      "metric": "quali_a_ahead",
+      "sql_val": 7,
+      "app_val": 7,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "williams:albon:colapinto",
+      "metric": "quali_b_ahead",
+      "sql_val": 2,
+      "app_val": 2,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "williams:albon:colapinto",
+      "metric": "quali_comparable",
+      "sql_val": 9,
+      "app_val": 9,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "williams:albon:colapinto",
+      "metric": "race_a_ahead",
+      "sql_val": 2,
+      "app_val": 2,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "williams:albon:colapinto",
+      "metric": "race_b_ahead",
+      "sql_val": 1,
+      "app_val": 1,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "williams:albon:colapinto",
+      "metric": "race_comparable",
+      "sql_val": 3,
+      "app_val": 3,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "sauber:bottas:zhou",
+      "metric": "quali_a_ahead",
+      "sql_val": 21,
+      "app_val": 21,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "sauber:bottas:zhou",
+      "metric": "quali_b_ahead",
+      "sql_val": 3,
+      "app_val": 3,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "sauber:bottas:zhou",
+      "metric": "quali_comparable",
+      "sql_val": 24,
+      "app_val": 24,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "sauber:bottas:zhou",
+      "metric": "race_a_ahead",
+      "sql_val": 12,
+      "app_val": 12,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "sauber:bottas:zhou",
+      "metric": "race_b_ahead",
+      "sql_val": 8,
+      "app_val": 8,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Teammate H2H",
+      "entity": "sauber:bottas:zhou",
+      "metric": "race_comparable",
+      "sql_val": 20,
+      "app_val": 20,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Rolling Form",
+      "entity": "max_verstappen",
+      "metric": "last3_avg_finish",
+      "sql_val": 4.0,
+      "app_val": 4.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Rolling Form",
+      "entity": "max_verstappen",
+      "metric": "last3_total_points",
+      "sql_val": 44.0,
+      "app_val": 44.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Rolling Form",
+      "entity": "max_verstappen",
+      "metric": "last5_avg_finish",
+      "sql_val": 3.8,
+      "app_val": 3.8,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Rolling Form",
+      "entity": "max_verstappen",
+      "metric": "last5_total_points",
+      "sql_val": 83.0,
+      "app_val": 83.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Rolling Form",
+      "entity": "norris",
+      "metric": "last3_avg_finish",
+      "sql_val": 5.67,
+      "app_val": 5.67,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Rolling Form",
+      "entity": "norris",
+      "metric": "last3_total_points",
+      "sql_val": 43.0,
+      "app_val": 43.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Rolling Form",
+      "entity": "norris",
+      "metric": "last5_avg_finish",
+      "sql_val": 5.0,
+      "app_val": 5.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Rolling Form",
+      "entity": "norris",
+      "metric": "last5_total_points",
+      "sql_val": 77.0,
+      "app_val": 77.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Rolling Form",
+      "entity": "leclerc",
+      "metric": "last3_avg_finish",
+      "sql_val": 3.0,
+      "app_val": 3.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Rolling Form",
+      "entity": "leclerc",
+      "metric": "last3_total_points",
+      "sql_val": 49.0,
+      "app_val": 49.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Rolling Form",
+      "entity": "leclerc",
+      "metric": "last5_avg_finish",
+      "sql_val": 3.4,
+      "app_val": 3.4,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Rolling Form",
+      "entity": "leclerc",
+      "metric": "last5_total_points",
+      "sql_val": 81.0,
+      "app_val": 81.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Rolling Form",
+      "entity": "piastri",
+      "metric": "last3_avg_finish",
+      "sql_val": 6.67,
+      "app_val": 6.67,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Rolling Form",
+      "entity": "piastri",
+      "metric": "last3_total_points",
+      "sql_val": 30.0,
+      "app_val": 30.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Rolling Form",
+      "entity": "piastri",
+      "metric": "last5_avg_finish",
+      "sql_val": 7.2,
+      "app_val": 7.2,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Rolling Form",
+      "entity": "piastri",
+      "metric": "last5_total_points",
+      "sql_val": 45.0,
+      "app_val": 45.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Rolling Form",
+      "entity": "russell",
+      "metric": "last3_avg_finish",
+      "sql_val": 3.33,
+      "app_val": 3.33,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Rolling Form",
+      "entity": "russell",
+      "metric": "last3_total_points",
+      "sql_val": 53.0,
+      "app_val": 53.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Rolling Form",
+      "entity": "russell",
+      "metric": "last5_avg_finish",
+      "sql_val": 3.8,
+      "app_val": 3.8,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Rolling Form",
+      "entity": "russell",
+      "metric": "last5_total_points",
+      "sql_val": 78.0,
+      "app_val": 78.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Rolling Form",
+      "entity": "hamilton",
+      "metric": "last3_avg_finish",
+      "sql_val": 6.0,
+      "app_val": 6.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Rolling Form",
+      "entity": "hamilton",
+      "metric": "last3_total_points",
+      "sql_val": 33.0,
+      "app_val": 33.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Rolling Form",
+      "entity": "hamilton",
+      "metric": "last5_avg_finish",
+      "sql_val": 6.4,
+      "app_val": 6.4,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Rolling Form",
+      "entity": "hamilton",
+      "metric": "last5_total_points",
+      "sql_val": 46.0,
+      "app_val": 46.0,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Points Rates",
+      "entity": "max_verstappen",
+      "metric": "gp_points_per_start",
+      "sql_val": 16.62,
+      "app_val": 16.62,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Points Rates",
+      "entity": "max_verstappen",
+      "metric": "total_points_per_round",
+      "sql_val": 18.21,
+      "app_val": 18.21,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Points Rates",
+      "entity": "norris",
+      "metric": "gp_points_per_start",
+      "sql_val": 14.33,
+      "app_val": 14.33,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Points Rates",
+      "entity": "norris",
+      "metric": "total_points_per_round",
+      "sql_val": 15.58,
+      "app_val": 15.58,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Points Rates",
+      "entity": "leclerc",
+      "metric": "gp_points_per_start",
+      "sql_val": 13.62,
+      "app_val": 13.62,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Points Rates",
+      "entity": "leclerc",
+      "metric": "total_points_per_round",
+      "sql_val": 14.83,
+      "app_val": 14.83,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Points Rates",
+      "entity": "piastri",
+      "metric": "gp_points_per_start",
+      "sql_val": 11.04,
+      "app_val": 11.04,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Points Rates",
+      "entity": "piastri",
+      "metric": "total_points_per_round",
+      "sql_val": 12.17,
+      "app_val": 12.17,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Points Rates",
+      "entity": "russell",
+      "metric": "gp_points_per_start",
+      "sql_val": 9.42,
+      "app_val": 9.42,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Points Rates",
+      "entity": "russell",
+      "metric": "total_points_per_round",
+      "sql_val": 10.21,
+      "app_val": 10.21,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Points Rates",
+      "entity": "hamilton",
+      "metric": "gp_points_per_start",
+      "sql_val": 8.62,
+      "app_val": 8.62,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Points Rates",
+      "entity": "hamilton",
+      "metric": "total_points_per_round",
+      "sql_val": 9.29,
+      "app_val": 9.29,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Points Rates",
+      "entity": "sainz",
+      "metric": "gp_points_per_start",
+      "sql_val": 11.39,
+      "app_val": 11.39,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Points Rates",
+      "entity": "sainz",
+      "metric": "total_points_per_round",
+      "sql_val": 12.61,
+      "app_val": 12.61,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Points Rates",
+      "entity": "perez",
+      "metric": "gp_points_per_start",
+      "sql_val": 5.75,
+      "app_val": 5.75,
+      "difference": null,
+      "verdict": "MATCH"
+    },
+    {
+      "category": "Points Rates",
+      "entity": "perez",
+      "metric": "total_points_per_round",
+      "sql_val": 6.33,
+      "app_val": 6.33,
+      "difference": null,
+      "verdict": "MATCH"
+    }
+  ],
+  "insight_rule_counts": {
+    "LONGITUDINAL_CONSTRUCTOR_PODIUM_RATE": 2,
+    "LONGITUDINAL_RECENT_FORM": 4,
+    "LONGITUDINAL_POINTS_PER_ROUND": 2,
+    "LONGITUDINAL_POINTS_PER_START": 1,
+    "LONGITUDINAL_POSITION_GAIN_PATTERN": 4,
+    "LONGITUDINAL_TEAMMATE_POINTS_H2H": 6,
+    "LONGITUDINAL_TEAMMATE_QUALIFYING_H2H": 9,
+    "LONGITUDINAL_TEAMMATE_RACE_H2H": 5
+  }
+}
