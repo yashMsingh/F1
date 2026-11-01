@@ -24,3 +24,7 @@ testpaths = ["tests"]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
+markers = [
+    "integration: integration tests requiring live PostgreSQL database",
+    "unit: isolated unit tests using SQLite",
+]

@@ -4,6 +4,7 @@ from unittest.mock import MagicMock, patch
 
 from app.ai.exceptions import AIRateLimitError
 from app.ai.types import NarrativeResponse
+from app.insights.types import InsightTraceability
 
 
 def test_get_insights(client):
@@ -266,25 +267,28 @@ def test_get_season_insights(client):
         mock_ins.sample_size = 5
         mock_ins.explanation = "Averaged 20.4 points per start."
 
-        mock_trace = MagicMock()
-        mock_trace.source_metric = "points_per_gp_start"
-        mock_trace.source_function = "compute_driver_longitudinal_stats"
-        mock_trace.rule_id = "LONGITUDINAL_POINTS_PER_START"
-        mock_trace.rule_parameters = {}
-        mock_trace.observed_value = 20.4
-        mock_trace.unit = "points"
-        mock_trace.sample_size = 5
-        mock_trace.minimum_sample_size = 3
-        mock_trace.sign_convention = "total_gp_points / gp_starts"
-        mock_trace.season_year = 2024
-        mock_trace.round_num = None
-        mock_trace.race_id = None
-        mock_trace.driver_id = "max_verstappen"
-        mock_trace.constructor_id = None
-        mock_trace.rounds_included = [1, 2, 3, 4, 5]
-        mock_trace.excluded_observations = 1
+        # Use a real InsightTraceability dataclass so that dataclasses.asdict()
+        # in the route handler works correctly (Mock is not a dataclass instance).
+        real_trace = InsightTraceability(
+            source_metric="points_per_gp_start",
+            source_function="compute_driver_longitudinal_stats",
+            rule_id="LONGITUDINAL_POINTS_PER_START",
+            rule_parameters={},
+            observed_value=20.4,
+            unit="points",
+            sample_size=5,
+            minimum_sample_size=3,
+            sign_convention="total_gp_points / gp_starts",
+            season_year=2024,
+            round_num=None,
+            race_id=None,
+            driver_id="max_verstappen",
+            constructor_id=None,
+            rounds_included=[1, 2, 3, 4, 5],
+            excluded_observations=1,
+        )
 
-        mock_ins.traceability = mock_trace
+        mock_ins.traceability = real_trace
         mock_get.return_value = [mock_ins]
 
         response = client.get("/api/season/2024/insights")

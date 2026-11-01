@@ -50,7 +50,7 @@ def test_driver_trajectory_returns_correct_number_of_rounds(session: Session):
     """Verstappen should have 5 trajectory entries across Rounds 1-5."""
     from app.analytics.longitudinal_driver import get_driver_trajectory
 
-    traj = get_driver_trajectory(session, SEASON_YEAR, "max_verstappen")
+    traj = get_driver_trajectory(session, SEASON_YEAR, "max_verstappen", up_to_round=TOTAL_ROUNDS)
     assert len(traj) == TOTAL_ROUNDS, (
         f"Expected {TOTAL_ROUNDS} trajectory entries for Verstappen, got {len(traj)}"
     )
@@ -133,7 +133,7 @@ def test_driver_season_aggregate_verstappen_dnf_counts(session: Session):
     """Verstappen entered all 5 races; DNF'd once (Round 3 Australia)."""
     from app.analytics.longitudinal_driver import get_driver_season_aggregate
 
-    agg = get_driver_season_aggregate(session, SEASON_YEAR, "max_verstappen")
+    agg = get_driver_season_aggregate(session, SEASON_YEAR, "max_verstappen", up_to_round=TOTAL_ROUNDS)
     assert agg is not None
     assert agg.races_entered == 5
     assert agg.dnf_count == 1
@@ -144,7 +144,7 @@ def test_driver_season_aggregate_verstappen_wins(session: Session):
     """Verstappen won Rounds 1, 2, 4, 5 — 4 wins total through Round 5."""
     from app.analytics.longitudinal_driver import get_driver_season_aggregate
 
-    agg = get_driver_season_aggregate(session, SEASON_YEAR, "max_verstappen")
+    agg = get_driver_season_aggregate(session, SEASON_YEAR, "max_verstappen", up_to_round=TOTAL_ROUNDS)
     assert agg is not None
     assert agg.wins == VER_WINS_1_TO_5
 
@@ -153,7 +153,7 @@ def test_driver_season_aggregate_dnf_excluded_from_average_finish(session: Sessi
     """Average finish should use only classified results (Australia DNF excluded from denominator)."""
     from app.analytics.longitudinal_driver import get_driver_season_aggregate
 
-    agg = get_driver_season_aggregate(session, SEASON_YEAR, "max_verstappen")
+    agg = get_driver_season_aggregate(session, SEASON_YEAR, "max_verstappen", up_to_round=TOTAL_ROUNDS)
     assert agg is not None
     # Classified finishes: Rounds 1,2,4,5 — all P1 -> average = 1.0
     assert agg.average_finish == 1.0
@@ -163,7 +163,7 @@ def test_driver_season_aggregate_points_separated(session: Session):
     """Total points = race points + sprint points, and sprint points > 0 for Round 5."""
     from app.analytics.longitudinal_driver import get_driver_season_aggregate
 
-    agg = get_driver_season_aggregate(session, SEASON_YEAR, "max_verstappen")
+    agg = get_driver_season_aggregate(session, SEASON_YEAR, "max_verstappen", up_to_round=TOTAL_ROUNDS)
     assert agg is not None
     assert agg.total_sprint_points > 0, "Should have sprint points from China"
     assert agg.total_points == agg.total_race_points + agg.total_sprint_points
@@ -197,7 +197,7 @@ def test_driver_season_aggregate_sainz_3_or_4_races(session: Session):
     """Sainz did not participate in Round 2 (Bearman subbed) so should have 4 entries: Rounds 1,3,4,5."""
     from app.analytics.longitudinal_driver import get_driver_season_aggregate
 
-    agg = get_driver_season_aggregate(session, SEASON_YEAR, "sainz")
+    agg = get_driver_season_aggregate(session, SEASON_YEAR, "sainz", up_to_round=TOTAL_ROUNDS)
     assert agg is not None
     assert agg.races_entered == SAINZ_ENTRIES_1_TO_5
 
@@ -260,7 +260,7 @@ def test_constructor_trajectory_red_bull_count(session: Session):
     """Red Bull should have 5 trajectory entries across Rounds 1-5."""
     from app.analytics.longitudinal_constructor import get_constructor_trajectory
 
-    traj = get_constructor_trajectory(session, SEASON_YEAR, "red_bull")
+    traj = get_constructor_trajectory(session, SEASON_YEAR, "red_bull", up_to_round=TOTAL_ROUNDS)
     assert len(traj) == TOTAL_ROUNDS
 
 
@@ -299,7 +299,7 @@ def test_constructor_season_aggregate_red_bull_total_points(session: Session):
     """Red Bull should have 195 total championship points after Round 5."""
     from app.analytics.longitudinal_constructor import get_constructor_season_aggregate
 
-    agg = get_constructor_season_aggregate(session, SEASON_YEAR, "red_bull")
+    agg = get_constructor_season_aggregate(session, SEASON_YEAR, "red_bull", up_to_round=TOTAL_ROUNDS)
     assert agg is not None
     assert agg.total_points == Decimal(str(RB_TOTAL_PTS))
 
@@ -308,7 +308,7 @@ def test_constructor_season_aggregate_red_bull_wins(session: Session):
     """Red Bull should have 4 wins (Rounds 1, 2, 4, 5)."""
     from app.analytics.longitudinal_constructor import get_constructor_season_aggregate
 
-    agg = get_constructor_season_aggregate(session, SEASON_YEAR, "red_bull")
+    agg = get_constructor_season_aggregate(session, SEASON_YEAR, "red_bull", up_to_round=TOTAL_ROUNDS)
     assert agg is not None
     assert agg.wins == RB_WINS
 
@@ -459,7 +459,7 @@ def test_season_teammate_comparisons_leclerc_sainz_rounds(session: Session):
     """Leclerc and Sainz were teammates in Rounds 1, 3, 4, 5 — 4 rounds together."""
     from app.analytics.longitudinal_teammate import get_season_teammate_comparisons
 
-    comps = get_season_teammate_comparisons(session, SEASON_YEAR)
+    comps = get_season_teammate_comparisons(session, SEASON_YEAR, up_to_round=TOTAL_ROUNDS)
     lec_sai = next(
         (c for c in comps if c.constructor_id == "ferrari" and "sainz" in (c.driver_a_id, c.driver_b_id) and "leclerc" in (c.driver_a_id, c.driver_b_id)),
         None,
@@ -472,7 +472,7 @@ def test_season_teammate_comparisons_red_bull_5_rounds(session: Session):
     """Verstappen and Perez were teammates all 5 rounds."""
     from app.analytics.longitudinal_teammate import get_season_teammate_comparisons
 
-    comps = get_season_teammate_comparisons(session, SEASON_YEAR)
+    comps = get_season_teammate_comparisons(session, SEASON_YEAR, up_to_round=TOTAL_ROUNDS)
     rb_comp = next((c for c in comps if c.constructor_id == "red_bull"), None)
     assert rb_comp is not None
     assert rb_comp.rounds_together == 5
@@ -482,7 +482,7 @@ def test_season_teammate_comparisons_comparable_rounds_australia_dnf(session: Se
     """Red Bull race-comparable rounds should be 4 (not 5) because of Verstappen DNF in Round 3."""
     from app.analytics.longitudinal_teammate import get_season_teammate_comparisons
 
-    comps = get_season_teammate_comparisons(session, SEASON_YEAR)
+    comps = get_season_teammate_comparisons(session, SEASON_YEAR, up_to_round=TOTAL_ROUNDS)
     rb_comp = next((c for c in comps if c.constructor_id == "red_bull"), None)
     assert rb_comp is not None
     assert rb_comp.race_comparable_rounds == 4, (
