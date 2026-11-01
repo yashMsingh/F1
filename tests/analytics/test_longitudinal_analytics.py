@@ -182,10 +182,14 @@ def test_driver_season_aggregate_pit_lane_grid_excluded(session: Session):
 
 
 def test_driver_season_aggregate_bearman_one_race(session: Session):
-    """Bearman subbed for Sainz in Round 2 only — should have 1 race entry, P7 finish, 6 pts."""
+    """Bearman subbed for Sainz in Round 2 only — should have 1 race entry, P7 finish, 6 pts through Round 5.
+
+    NOTE: Bounded to up_to_round=TOTAL_ROUNDS (5). Bearman raced again in later rounds (R16-24);
+    the unbounded call is no longer valid for the 5-round historical assertion.
+    """
     from app.analytics.longitudinal_driver import get_driver_season_aggregate
 
-    agg = get_driver_season_aggregate(session, SEASON_YEAR, "bearman")
+    agg = get_driver_season_aggregate(session, SEASON_YEAR, "bearman", up_to_round=TOTAL_ROUNDS)
     assert agg is not None, "Bearman should be found in 2024 season"
     assert agg.races_entered == BEARMAN_ENTRIES
     assert agg.best_finish == BEARMAN_FINISH
@@ -336,10 +340,14 @@ def test_constructor_season_aggregate_ferrari_3_drivers(session: Session):
 
 
 def test_constructor_season_aggregate_championship_standing(session: Session):
-    """Red Bull should be P1 in constructors championship."""
+    """Red Bull should be P1 in constructors championship through Round 5.
+
+    NOTE: Bounded to up_to_round=TOTAL_ROUNDS (5). Red Bull finished P3 in the full 2024 season;
+    the unbounded call is no longer valid for this 5-round historical assertion.
+    """
     from app.analytics.longitudinal_constructor import get_constructor_season_aggregate
 
-    agg = get_constructor_season_aggregate(session, SEASON_YEAR, "red_bull")
+    agg = get_constructor_season_aggregate(session, SEASON_YEAR, "red_bull", up_to_round=TOTAL_ROUNDS)
     assert agg is not None
     assert agg.championship_standing == 1
 
@@ -365,10 +373,14 @@ def test_get_all_constructors_season_aggregates_count(session: Session):
 
 
 def test_get_all_constructors_season_aggregates_red_bull_first(session: Session):
-    """Red Bull should be first in the sorted list (P1 championship)."""
+    """Red Bull should be first in the sorted list (P1 championship) through Round 5.
+
+    NOTE: Bounded to up_to_round=TOTAL_ROUNDS (5). McLaren finished P1 in the full 2024 season;
+    the unbounded call is no longer valid for this 5-round historical assertion.
+    """
     from app.analytics.longitudinal_constructor import get_all_constructors_season_aggregates
 
-    aggs = get_all_constructors_season_aggregates(session, SEASON_YEAR)
+    aggs = get_all_constructors_season_aggregates(session, SEASON_YEAR, up_to_round=TOTAL_ROUNDS)
     assert aggs[0].constructor_id == "red_bull"
 
 

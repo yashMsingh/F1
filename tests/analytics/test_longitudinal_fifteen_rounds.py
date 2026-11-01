@@ -94,22 +94,22 @@ def test_verstappen_fifteen_round_aggregate(session: Session):
     if not _check_db_has_data(session):
         pytest.skip("Requires 2024 Rounds 1-15 database")
 
-    # Verify both explicit up_to_round=15 and unbounded (up_to_round=None)
-    for agg in [
-        get_driver_season_aggregate(session, SEASON_YEAR, "max_verstappen", up_to_round=TOTAL_ROUNDS),
-        get_driver_season_aggregate(session, SEASON_YEAR, "max_verstappen"),
-    ]:
-        assert agg is not None, "Verstappen aggregate should exist"
-        assert agg.races_entered == 15, "Should have 15 GP starts"
-        assert agg.races_classified == 14, "Should have 14 classified finishes"
-        assert agg.dnf_count == 1, "Should have 1 DNF (Australia Round 3)"
-        assert agg.total_race_points == Decimal("271.00"), "Should have 271.00 GP race points"
-        assert agg.total_sprint_points == Decimal("24.00"), "Should have 24.00 sprint points (China 8, Miami 8, Austria 8)"
-        assert agg.total_points == Decimal("295.00"), "Should have 295.00 total points"
-        assert agg.wins == 7, "Should have 7 Grand Prix wins"
-        assert agg.championship_standing == 1, "Should be P1 in championship"
-        assert round(agg.average_finish, 2) == 2.36, "Average finish should be 2.36 (33/14)"
-        assert round(agg.average_grid, 2) == 2.53, "Average grid should be 2.53 (38/15)"
+    # Verify explicit up_to_round=15 only.
+    # NOTE: The unbounded call was valid when only 15 rounds existed in the DB.
+    # With 24 rounds now present, unbounded correctly returns 24-round totals.
+    # Unbounded 24-round coverage is deferred to Phase 5B tests.
+    agg = get_driver_season_aggregate(session, SEASON_YEAR, "max_verstappen", up_to_round=TOTAL_ROUNDS)
+    assert agg is not None, "Verstappen aggregate should exist"
+    assert agg.races_entered == 15, "Should have 15 GP starts"
+    assert agg.races_classified == 14, "Should have 14 classified finishes"
+    assert agg.dnf_count == 1, "Should have 1 DNF (Australia Round 3)"
+    assert agg.total_race_points == Decimal("271.00"), "Should have 271.00 GP race points"
+    assert agg.total_sprint_points == Decimal("24.00"), "Should have 24.00 sprint points (China 8, Miami 8, Austria 8)"
+    assert agg.total_points == Decimal("295.00"), "Should have 295.00 total points"
+    assert agg.wins == 7, "Should have 7 Grand Prix wins"
+    assert agg.championship_standing == 1, "Should be P1 in championship"
+    assert round(agg.average_finish, 2) == 2.36, "Average finish should be 2.36 (33/14)"
+    assert round(agg.average_grid, 2) == 2.53, "Average grid should be 2.53 (38/15)"
 
 
 def test_perez_fifteen_round_aggregate(session: Session):
@@ -324,22 +324,23 @@ def test_red_bull_fifteen_round_aggregate(session: Session):
     if not _check_db_has_data(session):
         pytest.skip("Requires 2024 Rounds 1-15 database")
 
-    for agg in [
-        get_constructor_season_aggregate(session, SEASON_YEAR, "red_bull", up_to_round=TOTAL_ROUNDS),
-        get_constructor_season_aggregate(session, SEASON_YEAR, "red_bull"),
-    ]:
-        assert agg is not None
-        assert agg.total_points == Decimal("434.00")
-        assert agg.wins == 7
-        assert agg.championship_standing == 1
+    # Verify explicit up_to_round=15 only.
+    # NOTE: The unbounded call was valid when only 15 rounds existed in the DB.
+    # With 24 rounds now present, unbounded correctly returns 24-round totals.
+    # Unbounded 24-round coverage is deferred to Phase 5B tests.
+    agg = get_constructor_season_aggregate(session, SEASON_YEAR, "red_bull", up_to_round=TOTAL_ROUNDS)
+    assert agg is not None
+    assert agg.total_points == Decimal("434.00")
+    assert agg.wins == 7
+    assert agg.championship_standing == 1
 
-        # Driver contributions: Verstappen (295.00) + Perez (139.00) = 434.00
-        contrib_total = sum(c.total_points for c in agg.driver_contributions)
-        assert contrib_total == Decimal("434.00")
-        ver_c = next(c for c in agg.driver_contributions if c.driver_id == "max_verstappen")
-        per_c = next(c for c in agg.driver_contributions if c.driver_id == "perez")
-        assert ver_c.total_points == Decimal("295.00")
-        assert per_c.total_points == Decimal("139.00")
+    # Driver contributions: Verstappen (295.00) + Perez (139.00) = 434.00
+    contrib_total = sum(c.total_points for c in agg.driver_contributions)
+    assert contrib_total == Decimal("434.00")
+    ver_c = next(c for c in agg.driver_contributions if c.driver_id == "max_verstappen")
+    per_c = next(c for c in agg.driver_contributions if c.driver_id == "perez")
+    assert ver_c.total_points == Decimal("295.00")
+    assert per_c.total_points == Decimal("139.00")
 
 
 def test_mclaren_fifteen_round_aggregate(session: Session):
