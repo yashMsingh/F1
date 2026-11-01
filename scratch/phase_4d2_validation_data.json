@@ -1,0 +1,635 @@
+{
+  "drivers": [
+    {
+      "driver_id": "max_verstappen",
+      "sql": {
+        "starts": 15,
+        "classified": 14,
+        "dnf": 1,
+        "race_pts": "271.00",
+        "sprint_pts": "24.00",
+        "total_pts": "295.00",
+        "wins": 7,
+        "avg_finish": 2.36,
+        "avg_grid": 2.53,
+        "standing": 1
+      },
+      "app": {
+        "starts": 15,
+        "classified": 14,
+        "dnf": 1,
+        "race_pts": "271.00",
+        "sprint_pts": "24.00",
+        "total_pts": "295.00",
+        "wins": 7,
+        "avg_finish": 2.36,
+        "avg_grid": 2.53,
+        "standing": 1
+      }
+    },
+    {
+      "driver_id": "perez",
+      "sql": {
+        "starts": 15,
+        "classified": 13,
+        "dnf": 2,
+        "race_pts": "126.00",
+        "sprint_pts": "13.00",
+        "total_pts": "139.00",
+        "wins": 0,
+        "avg_finish": 6.0,
+        "avg_grid": 8.47,
+        "standing": 7
+      },
+      "app": {
+        "starts": 15,
+        "classified": 13,
+        "dnf": 2,
+        "race_pts": "126.00",
+        "sprint_pts": "13.00",
+        "total_pts": "139.00",
+        "wins": 0,
+        "avg_finish": 6.0,
+        "avg_grid": 8.47,
+        "standing": 7
+      }
+    },
+    {
+      "driver_id": "norris",
+      "sql": {
+        "starts": 15,
+        "classified": 15,
+        "dnf": 0,
+        "race_pts": "216.00",
+        "sprint_pts": "9.00",
+        "total_pts": "225.00",
+        "wins": 2,
+        "avg_finish": 4.4,
+        "avg_grid": 3.27,
+        "standing": 2
+      },
+      "app": {
+        "starts": 15,
+        "classified": 15,
+        "dnf": 0,
+        "race_pts": "216.00",
+        "sprint_pts": "9.00",
+        "total_pts": "225.00",
+        "wins": 2,
+        "avg_finish": 4.4,
+        "avg_grid": 3.27,
+        "standing": 2
+      }
+    },
+    {
+      "driver_id": "leclerc",
+      "sql": {
+        "starts": 15,
+        "classified": 14,
+        "dnf": 1,
+        "race_pts": "178.00",
+        "sprint_pts": "14.00",
+        "total_pts": "192.00",
+        "wins": 1,
+        "avg_finish": 4.57,
+        "avg_grid": 4.93,
+        "standing": 3
+      },
+      "app": {
+        "starts": 15,
+        "classified": 14,
+        "dnf": 1,
+        "race_pts": "178.00",
+        "sprint_pts": "14.00",
+        "total_pts": "192.00",
+        "wins": 1,
+        "avg_finish": 4.57,
+        "avg_grid": 4.93,
+        "standing": 3
+      }
+    },
+    {
+      "driver_id": "sainz",
+      "sql": {
+        "starts": 14,
+        "classified": 13,
+        "dnf": 1,
+        "race_pts": "160.00",
+        "sprint_pts": "12.00",
+        "total_pts": "172.00",
+        "wins": 1,
+        "avg_finish": 4.31,
+        "avg_grid": 5.5,
+        "standing": 5
+      },
+      "app": {
+        "starts": 14,
+        "classified": 13,
+        "dnf": 1,
+        "race_pts": "160.00",
+        "sprint_pts": "12.00",
+        "total_pts": "172.00",
+        "wins": 1,
+        "avg_finish": 4.31,
+        "avg_grid": 5.5,
+        "standing": 5
+      }
+    },
+    {
+      "driver_id": "russell",
+      "sql": {
+        "starts": 15,
+        "classified": 12,
+        "dnf": 3,
+        "race_pts": "116.00",
+        "sprint_pts": "6.00",
+        "total_pts": "122.00",
+        "wins": 1,
+        "avg_finish": 5.58,
+        "avg_grid": 5.87,
+        "standing": 8
+      },
+      "app": {
+        "starts": 15,
+        "classified": 12,
+        "dnf": 3,
+        "race_pts": "116.00",
+        "sprint_pts": "6.00",
+        "total_pts": "122.00",
+        "wins": 1,
+        "avg_finish": 5.58,
+        "avg_grid": 5.87,
+        "standing": 8
+      }
+    },
+    {
+      "driver_id": "hamilton",
+      "sql": {
+        "starts": 15,
+        "classified": 14,
+        "dnf": 1,
+        "race_pts": "144.00",
+        "sprint_pts": "10.00",
+        "total_pts": "154.00",
+        "wins": 2,
+        "avg_finish": 5.5,
+        "avg_grid": 7.67,
+        "standing": 6
+      },
+      "app": {
+        "starts": 15,
+        "classified": 14,
+        "dnf": 1,
+        "race_pts": "144.00",
+        "sprint_pts": "10.00",
+        "total_pts": "154.00",
+        "wins": 2,
+        "avg_finish": 5.5,
+        "avg_grid": 7.67,
+        "standing": 6
+      }
+    },
+    {
+      "driver_id": "piastri",
+      "sql": {
+        "starts": 15,
+        "classified": 15,
+        "dnf": 0,
+        "race_pts": "167.00",
+        "sprint_pts": "12.00",
+        "total_pts": "179.00",
+        "wins": 1,
+        "avg_finish": 5.07,
+        "avg_grid": 5.13,
+        "standing": 4
+      },
+      "app": {
+        "starts": 15,
+        "classified": 15,
+        "dnf": 0,
+        "race_pts": "167.00",
+        "sprint_pts": "12.00",
+        "total_pts": "179.00",
+        "wins": 1,
+        "avg_finish": 5.07,
+        "avg_grid": 5.13,
+        "standing": 4
+      }
+    },
+    {
+      "driver_id": "bearman",
+      "sql": {
+        "starts": 1,
+        "classified": 1,
+        "dnf": 0,
+        "race_pts": "6.00",
+        "sprint_pts": "0.0",
+        "total_pts": "6.00",
+        "wins": 0,
+        "avg_finish": 7.0,
+        "avg_grid": 11.0,
+        "standing": 15
+      },
+      "app": {
+        "starts": 1,
+        "classified": 1,
+        "dnf": 0,
+        "race_pts": "6.00",
+        "sprint_pts": "0.0",
+        "total_pts": "6.00",
+        "wins": 0,
+        "avg_finish": 7.0,
+        "avg_grid": 11.0,
+        "standing": 15
+      }
+    }
+  ],
+  "constructors": [
+    {
+      "constructor_id": "red_bull",
+      "sql": {
+        "rounds": 15,
+        "car_starts": 30,
+        "car_finishes": 27,
+        "race_pts": "397.00",
+        "sprint_pts": "37.00",
+        "total_pts": "434.00",
+        "wins": 7,
+        "standing": 1
+      },
+      "app": {
+        "rounds": 15,
+        "car_starts": 30,
+        "car_finishes": 30,
+        "race_pts": "397.00",
+        "sprint_pts": "37.00",
+        "total_pts": "434.00",
+        "wins": 7,
+        "standing": 1
+      }
+    },
+    {
+      "constructor_id": "ferrari",
+      "sql": {
+        "rounds": 15,
+        "car_starts": 30,
+        "car_finishes": 28,
+        "race_pts": "344.00",
+        "sprint_pts": "26.00",
+        "total_pts": "370.00",
+        "wins": 2,
+        "standing": 3
+      },
+      "app": {
+        "rounds": 15,
+        "car_starts": 30,
+        "car_finishes": 30,
+        "race_pts": "344.00",
+        "sprint_pts": "26.00",
+        "total_pts": "370.00",
+        "wins": 2,
+        "standing": 3
+      }
+    },
+    {
+      "constructor_id": "mclaren",
+      "sql": {
+        "rounds": 15,
+        "car_starts": 30,
+        "car_finishes": 30,
+        "race_pts": "383.00",
+        "sprint_pts": "21.00",
+        "total_pts": "404.00",
+        "wins": 3,
+        "standing": 2
+      },
+      "app": {
+        "rounds": 15,
+        "car_starts": 30,
+        "car_finishes": 30,
+        "race_pts": "383.00",
+        "sprint_pts": "21.00",
+        "total_pts": "404.00",
+        "wins": 3,
+        "standing": 2
+      }
+    },
+    {
+      "constructor_id": "mercedes",
+      "sql": {
+        "rounds": 15,
+        "car_starts": 30,
+        "car_finishes": 26,
+        "race_pts": "260.00",
+        "sprint_pts": "16.00",
+        "total_pts": "276.00",
+        "wins": 3,
+        "standing": 4
+      },
+      "app": {
+        "rounds": 15,
+        "car_starts": 30,
+        "car_finishes": 30,
+        "race_pts": "260.00",
+        "sprint_pts": "16.00",
+        "total_pts": "276.00",
+        "wins": 3,
+        "standing": 4
+      }
+    }
+  ],
+  "teammates": [
+    {
+      "pairing": "red_bull: max_verstappen vs perez",
+      "sql": {
+        "rounds_together": 15,
+        "comp_q": 15,
+        "q_ahead_a": 15,
+        "q_ahead_b": 0,
+        "comp_r": 12,
+        "r_ahead_a": 12,
+        "r_ahead_b": 0,
+        "tot_pts_a": "295.00",
+        "tot_pts_b": "139.00"
+      },
+      "app": {
+        "rounds_together": 15,
+        "comp_q": 15,
+        "q_ahead_a": 15,
+        "q_ahead_b": 0,
+        "comp_r": 12,
+        "r_ahead_a": 12,
+        "r_ahead_b": 0,
+        "tot_pts_a": "295.00",
+        "tot_pts_b": "139.00"
+      }
+    },
+    {
+      "pairing": "ferrari: leclerc vs sainz",
+      "sql": {
+        "rounds_together": 14,
+        "comp_q": 14,
+        "q_ahead_a": 9,
+        "q_ahead_b": 5,
+        "comp_r": 13,
+        "r_ahead_a": 8,
+        "r_ahead_b": 5,
+        "tot_pts_a": "176.00",
+        "tot_pts_b": "172.00"
+      },
+      "app": {
+        "rounds_together": 14,
+        "comp_q": 14,
+        "q_ahead_a": 9,
+        "q_ahead_b": 5,
+        "comp_r": 13,
+        "r_ahead_a": 8,
+        "r_ahead_b": 5,
+        "tot_pts_a": "176.00",
+        "tot_pts_b": "172.00"
+      }
+    },
+    {
+      "pairing": "ferrari: bearman vs leclerc",
+      "sql": {
+        "rounds_together": 1,
+        "comp_q": 1,
+        "q_ahead_a": 0,
+        "q_ahead_b": 1,
+        "comp_r": 1,
+        "r_ahead_a": 0,
+        "r_ahead_b": 1,
+        "tot_pts_a": "6.00",
+        "tot_pts_b": "16.00"
+      },
+      "app": {
+        "rounds_together": 1,
+        "comp_q": 1,
+        "q_ahead_a": 0,
+        "q_ahead_b": 1,
+        "comp_r": 1,
+        "r_ahead_a": 0,
+        "r_ahead_b": 1,
+        "tot_pts_a": "6.00",
+        "tot_pts_b": "16.00"
+      }
+    },
+    {
+      "pairing": "mclaren: norris vs piastri",
+      "sql": {
+        "rounds_together": 15,
+        "comp_q": 15,
+        "q_ahead_a": 12,
+        "q_ahead_b": 3,
+        "comp_r": 15,
+        "r_ahead_a": 10,
+        "r_ahead_b": 5,
+        "tot_pts_a": "225.00",
+        "tot_pts_b": "179.00"
+      },
+      "app": {
+        "rounds_together": 15,
+        "comp_q": 15,
+        "q_ahead_a": 12,
+        "q_ahead_b": 3,
+        "comp_r": 15,
+        "r_ahead_a": 10,
+        "r_ahead_b": 5,
+        "tot_pts_a": "225.00",
+        "tot_pts_b": "179.00"
+      }
+    },
+    {
+      "pairing": "mercedes: hamilton vs russell",
+      "sql": {
+        "rounds_together": 15,
+        "comp_q": 15,
+        "q_ahead_a": 4,
+        "q_ahead_b": 11,
+        "comp_r": 12,
+        "r_ahead_a": 4,
+        "r_ahead_b": 8,
+        "tot_pts_a": "154.00",
+        "tot_pts_b": "122.00"
+      },
+      "app": {
+        "rounds_together": 15,
+        "comp_q": 15,
+        "q_ahead_a": 4,
+        "q_ahead_b": 11,
+        "comp_r": 12,
+        "r_ahead_a": 4,
+        "r_ahead_b": 8,
+        "tot_pts_a": "154.00",
+        "tot_pts_b": "122.00"
+      }
+    }
+  ],
+  "rolling": [
+    {
+      "driver_id": "max_verstappen",
+      "rounds_included": [
+        13,
+        14,
+        15
+      ],
+      "sql": {
+        "valid_finishes": 3,
+        "mean_finish": 3.6667,
+        "race_points": "40.00",
+        "sprint_points": "0.0",
+        "combined_points": "40.00"
+      },
+      "app": {
+        "valid_finishes": 3,
+        "mean_finish": 3.6667,
+        "race_points": "40.00",
+        "sprint_points": "0.0",
+        "combined_points": "40.00"
+      }
+    },
+    {
+      "driver_id": "norris",
+      "rounds_included": [
+        13,
+        14,
+        15
+      ],
+      "sql": {
+        "valid_finishes": 3,
+        "mean_finish": 2.6667,
+        "race_points": "54.00",
+        "sprint_points": "0.0",
+        "combined_points": "54.00"
+      },
+      "app": {
+        "valid_finishes": 3,
+        "mean_finish": 2.6667,
+        "race_points": "54.00",
+        "sprint_points": "0.0",
+        "combined_points": "54.00"
+      }
+    },
+    {
+      "driver_id": "leclerc",
+      "rounds_included": [
+        13,
+        14,
+        15
+      ],
+      "sql": {
+        "valid_finishes": 3,
+        "mean_finish": 3.3333,
+        "race_points": "42.00",
+        "sprint_points": "0.0",
+        "combined_points": "42.00"
+      },
+      "app": {
+        "valid_finishes": 3,
+        "mean_finish": 3.3333,
+        "race_points": "42.00",
+        "sprint_points": "0.0",
+        "combined_points": "42.00"
+      }
+    },
+    {
+      "driver_id": "russell",
+      "rounds_included": [
+        13,
+        14,
+        15
+      ],
+      "sql": {
+        "valid_finishes": 2,
+        "mean_finish": 7.5,
+        "race_points": "11.00",
+        "sprint_points": "0.0",
+        "combined_points": "11.00"
+      },
+      "app": {
+        "valid_finishes": 2,
+        "mean_finish": 7.5,
+        "race_points": "11.00",
+        "sprint_points": "0.0",
+        "combined_points": "11.00"
+      }
+    }
+  ],
+  "rates": [
+    {
+      "driver_id": "max_verstappen",
+      "sql": {
+        "rounds_entered": 15,
+        "gp_starts": 15,
+        "pts_per_gp_start": 18.0667,
+        "pts_per_round": 19.6667
+      },
+      "app": {
+        "rounds_entered": 15,
+        "gp_starts": 15,
+        "pts_per_gp_start": 18.0667,
+        "pts_per_round": 19.6667
+      }
+    },
+    {
+      "driver_id": "norris",
+      "sql": {
+        "rounds_entered": 15,
+        "gp_starts": 15,
+        "pts_per_gp_start": 14.4,
+        "pts_per_round": 15.0
+      },
+      "app": {
+        "rounds_entered": 15,
+        "gp_starts": 15,
+        "pts_per_gp_start": 14.4,
+        "pts_per_round": 15.0
+      }
+    },
+    {
+      "driver_id": "leclerc",
+      "sql": {
+        "rounds_entered": 15,
+        "gp_starts": 15,
+        "pts_per_gp_start": 11.8667,
+        "pts_per_round": 12.8
+      },
+      "app": {
+        "rounds_entered": 15,
+        "gp_starts": 15,
+        "pts_per_gp_start": 11.8667,
+        "pts_per_round": 12.8
+      }
+    },
+    {
+      "driver_id": "russell",
+      "sql": {
+        "rounds_entered": 15,
+        "gp_starts": 15,
+        "pts_per_gp_start": 7.7333,
+        "pts_per_round": 8.1333
+      },
+      "app": {
+        "rounds_entered": 15,
+        "gp_starts": 15,
+        "pts_per_gp_start": 7.7333,
+        "pts_per_round": 8.1333
+      }
+    },
+    {
+      "driver_id": "bearman",
+      "sql": {
+        "rounds_entered": 1,
+        "gp_starts": 1,
+        "pts_per_gp_start": 6.0,
+        "pts_per_round": 6.0
+      },
+      "app": {
+        "rounds_entered": 1,
+        "gp_starts": 1,
+        "pts_per_gp_start": 6.0,
+        "pts_per_round": 6.0
+      }
+    }
+  ]
+}

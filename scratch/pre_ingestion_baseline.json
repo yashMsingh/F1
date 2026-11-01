@@ -1,0 +1,139 @@
+{
+  "counts": {
+    "seasons": 1,
+    "circuits": 10,
+    "constructors": 10,
+    "drivers": 22,
+    "races": 10,
+    "race_results": 199,
+    "qualifying_results": 199,
+    "sprint_results": 40,
+    "pit_stops": 354,
+    "lap_times": 11117,
+    "driver_standings": 209,
+    "constructor_standings": 100,
+    "etl_log": 10
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "race_name": "Bahrain Grand Prix",
+      "date": "2024-03-02",
+      "race_results": 20,
+      "quali_results": 20,
+      "sprint_results": 0,
+      "pit_stops": 43,
+      "lap_times": 1129,
+      "driver_standings": 20,
+      "constructor_standings": 10
+    },
+    {
+      "round": 2,
+      "race_name": "Saudi Arabian Grand Prix",
+      "date": "2024-03-09",
+      "race_results": 20,
+      "quali_results": 20,
+      "sprint_results": 0,
+      "pit_stops": 19,
+      "lap_times": 900,
+      "driver_standings": 21,
+      "constructor_standings": 10
+    },
+    {
+      "round": 3,
+      "race_name": "Australian Grand Prix",
+      "date": "2024-03-24",
+      "race_results": 19,
+      "quali_results": 19,
+      "sprint_results": 0,
+      "pit_stops": 36,
+      "lap_times": 995,
+      "driver_standings": 21,
+      "constructor_standings": 10
+    },
+    {
+      "round": 4,
+      "race_name": "Japanese Grand Prix",
+      "date": "2024-04-07",
+      "race_results": 20,
+      "quali_results": 20,
+      "sprint_results": 0,
+      "pit_stops": 54,
+      "lap_times": 905,
+      "driver_standings": 21,
+      "constructor_standings": 10
+    },
+    {
+      "round": 5,
+      "race_name": "Chinese Grand Prix",
+      "date": "2024-04-21",
+      "race_results": 20,
+      "quali_results": 20,
+      "sprint_results": 20,
+      "pit_stops": 40,
+      "lap_times": 1030,
+      "driver_standings": 21,
+      "constructor_standings": 10
+    },
+    {
+      "round": 6,
+      "race_name": "Miami Grand Prix",
+      "date": "2024-05-05",
+      "race_results": 20,
+      "quali_results": 20,
+      "sprint_results": 20,
+      "pit_stops": 28,
+      "lap_times": 1110,
+      "driver_standings": 21,
+      "constructor_standings": 10
+    },
+    {
+      "round": 7,
+      "race_name": "Emilia Romagna Grand Prix",
+      "date": "2024-05-19",
+      "race_results": 20,
+      "quali_results": 20,
+      "sprint_results": 0,
+      "pit_stops": 27,
+      "lap_times": 1238,
+      "driver_standings": 21,
+      "constructor_standings": 10
+    },
+    {
+      "round": 8,
+      "race_name": "Monaco Grand Prix",
+      "date": "2024-05-26",
+      "race_results": 20,
+      "quali_results": 20,
+      "sprint_results": 0,
+      "pit_stops": 23,
+      "lap_times": 1233,
+      "driver_standings": 21,
+      "constructor_standings": 10
+    },
+    {
+      "round": 9,
+      "race_name": "Canadian Grand Prix",
+      "date": "2024-06-09",
+      "race_results": 20,
+      "quali_results": 20,
+      "sprint_results": 0,
+      "pit_stops": 42,
+      "lap_times": 1267,
+      "driver_standings": 21,
+      "constructor_standings": 10
+    },
+    {
+      "round": 10,
+      "race_name": "Spanish Grand Prix",
+      "date": "2024-06-23",
+      "race_results": 20,
+      "quali_results": 20,
+      "sprint_results": 0,
+      "pit_stops": 42,
+      "lap_times": 1310,
+      "driver_standings": 21,
+      "constructor_standings": 10
+    }
+  ]
+}
