@@ -169,3 +169,56 @@ class LongitudinalInsightService:
         return InsightEngine.evaluate_season_longitudinal_insights(
             session, season_year, up_to_round
         )
+
+    @staticmethod
+    def get_driver_conversion_insights(
+        session: Session,
+        season_year: int,
+        driver_id: str,
+        up_to_round: Optional[int] = None,
+    ) -> list[Insight]:
+        """Retrieve qualifying-to-race conversion insights for a specific driver.
+
+        Pipeline:
+            Phase 5B.2A conversion summary SQL
+            -> Phase 5B.2A conversion statistical evidence
+            -> Phase 5B.2A deterministic conversion insight evaluators
+
+        Args:
+            session: Active database session.
+            season_year: Championship season year.
+            driver_id: Driver slug (e.g. 'max_verstappen').
+            up_to_round: Optional round cutoff (inclusive).
+
+        Returns:
+            Deduplicated, deterministically ordered list of Insight instances.
+        """
+        from app.analytics.conversion_analysis import get_driver_conversion_summary
+        from app.statistics.conversion import compute_driver_conversion_stats
+
+        summary = get_driver_conversion_summary(session, season_year, driver_id, up_to_round)
+        if not summary:
+            return []
+
+        stats = compute_driver_conversion_stats(summary)
+        return InsightEngine.evaluate_driver_conversion_insights(stats)
+
+    @staticmethod
+    def get_season_conversion_insights(
+        session: Session,
+        season_year: int,
+        up_to_round: Optional[int] = None,
+    ) -> list[Insight]:
+        """Retrieve all qualifying-to-race conversion insights for a season across all drivers.
+
+        Args:
+            session: Active database session.
+            season_year: Championship season year.
+            up_to_round: Optional round cutoff (inclusive).
+
+        Returns:
+            Deduplicated, deterministically ordered list of Insight instances.
+        """
+        return InsightEngine.evaluate_season_conversion_insights(
+            session, season_year, up_to_round
+        )

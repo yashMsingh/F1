@@ -15,6 +15,9 @@ from app.insights.evaluators.longitudinal import (
     evaluate_driver_longitudinal_insights,
     evaluate_longitudinal_teammate_h2h,
 )
+from app.insights.evaluators.conversion import (
+    evaluate_driver_conversion_insights,
+)
 from app.insights.evaluators.pit_stops import (
     evaluate_fast_pit_stop,
     evaluate_pit_stop_variability,
@@ -39,6 +42,7 @@ from app.statistics.types import (
     DriverLongitudinalStats,
     TeammateH2HStatistics,
 )
+from app.statistics.conversion import DriverConversionStats
 from app.statistics.pit_stops import compute_pit_stop_stats
 from app.statistics.race_pace import compute_lap_time_stats
 
@@ -278,6 +282,55 @@ class InsightEngine:
                 raw_insights.extend(con_insights)
 
         # Deduplicate and sort deterministically
+        deduped = cls.deduplicate(raw_insights)
+        deduped.sort(key=lambda x: (x.category.value, x.rule_id, x.subject_id, x.insight_id))
+        return deduped
+
+    @classmethod
+    def evaluate_driver_conversion_insights(
+        cls,
+        stats: DriverConversionStats,
+    ) -> list[Insight]:
+        """Generate all deterministic conversion insights for a driver.
+
+        Args:
+            stats: DriverConversionStats instance from Phase 5B.2A.
+
+        Returns:
+            Deduplicated, deterministically ordered list of Insight instances.
+        """
+        raw = evaluate_driver_conversion_insights(stats)
+        deduped = cls.deduplicate(raw)
+        deduped.sort(key=lambda x: (x.category.value, x.rule_id, x.subject_id, x.insight_id))
+        return deduped
+
+    @classmethod
+    def evaluate_season_conversion_insights(
+        cls,
+        session: Session,
+        season_year: int,
+        up_to_round: Optional[int] = None,
+    ) -> list[Insight]:
+        """Generate all deterministic conversion insights across all drivers for a season.
+
+        Args:
+            session: Active database session.
+            season_year: Championship season year.
+            up_to_round: Optional round cutoff (inclusive).
+
+        Returns:
+            Deduplicated, deterministically ordered list of Insight instances.
+        """
+        from app.analytics.conversion_analysis import get_all_drivers_conversion_summaries
+        from app.statistics.conversion import compute_driver_conversion_stats
+
+        summaries = get_all_drivers_conversion_summaries(session, season_year, up_to_round)
+        raw_insights: list[Insight] = []
+        for summ in summaries:
+            stats = compute_driver_conversion_stats(summ)
+            driver_insights = evaluate_driver_conversion_insights(stats)
+            raw_insights.extend(driver_insights)
+
         deduped = cls.deduplicate(raw_insights)
         deduped.sort(key=lambda x: (x.category.value, x.rule_id, x.subject_id, x.insight_id))
         return deduped

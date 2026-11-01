@@ -42,6 +42,14 @@ RULE_LONGITUDINAL_TEAMMATE_POINTS_H2H = "LONGITUDINAL_TEAMMATE_POINTS_H2H"
 RULE_LONGITUDINAL_CONSTRUCTOR_PODIUM_RATE = "LONGITUDINAL_CONSTRUCTOR_PODIUM_RATE"
 RULE_LONGITUDINAL_CONSTRUCTOR_TRAJECTORY = RULE_LONGITUDINAL_CONSTRUCTOR_PODIUM_RATE  # Semantic alias
 
+# ─── Conversion & Race Craft Rule IDs (Phase 5B.2A) ───────────────────────────
+
+RULE_POLE_TO_WIN_CONVERSION = "POLE_TO_WIN_CONVERSION"
+RULE_FRONT_ROW_PODIUM_RETENTION = "FRONT_ROW_PODIUM_RETENTION"
+RULE_GRID_TIER_POSITION_LOSS = "GRID_TIER_POSITION_LOSS"
+RULE_GRID_TIER_POSITION_GAIN = "GRID_TIER_POSITION_GAIN"
+RULE_TOP10_CONVERSION_HIGH = "TOP10_CONVERSION_HIGH"
+
 # ─── Configurable Named Threshold Constants ──────────────────────────────────
 
 LARGE_POSITION_GAIN_THRESHOLD = 5
@@ -60,6 +68,16 @@ LONGITUDINAL_POINTS_PER_ROUND_THRESHOLD = 15.0
 LONGITUDINAL_TEAMMATE_WIN_RATE_THRESHOLD = 0.70
 LONGITUDINAL_TEAMMATE_POINTS_DIFF_THRESHOLD = 15.0
 LONGITUDINAL_CONSTRUCTOR_PODIUM_RATE_THRESHOLD = 0.60
+
+# Conversion & Race Craft Threshold Constants (Phase 5B.2A)
+POLE_TO_WIN_MIN_SAMPLE_SIZE = 3
+FRONT_ROW_MIN_SAMPLE_SIZE = 3
+GRID_TIER_MIN_SAMPLE_SIZE = 5
+TOP10_CONVERSION_MIN_SAMPLE_SIZE = 5
+
+GRID_TIER_FRONT_LOSS_THRESHOLD = -1.50
+GRID_TIER_LOWER_GAIN_THRESHOLD = 2.00
+TOP10_CONVERSION_HIGH_THRESHOLD = 90.0
 
 # ─── Rule Registry ────────────────────────────────────────────────────────────
 
@@ -269,6 +287,44 @@ RULE_REGISTRY: dict[str, RuleDefinition] = {
         metric="podium_rate",
         min_sample_size=3,
         thresholds={"podium_rate_threshold": LONGITUDINAL_CONSTRUCTOR_PODIUM_RATE_THRESHOLD},
+    ),
+    RULE_POLE_TO_WIN_CONVERSION: RuleDefinition(
+        rule_id=RULE_POLE_TO_WIN_CONVERSION,
+        category=InsightCategory.QUALIFYING,
+        description="Driver converted pole positions (qualifying P1) to Grand Prix wins across at least 3 pole starts.",
+        metric="pole_to_win_rate",
+        min_sample_size=POLE_TO_WIN_MIN_SAMPLE_SIZE,
+    ),
+    RULE_FRONT_ROW_PODIUM_RETENTION: RuleDefinition(
+        rule_id=RULE_FRONT_ROW_PODIUM_RETENTION,
+        category=InsightCategory.QUALIFYING,
+        description="Driver retained front-row starts (qualifying P1 or P2) as Grand Prix podium finishes across at least 3 front-row starts.",
+        metric="front_row_podium_rate",
+        min_sample_size=FRONT_ROW_MIN_SAMPLE_SIZE,
+    ),
+    RULE_GRID_TIER_POSITION_LOSS: RuleDefinition(
+        rule_id=RULE_GRID_TIER_POSITION_LOSS,
+        category=InsightCategory.POSITION_CHANGE,
+        description=f"Driver experienced significant average position loss (avg delta <= {GRID_TIER_FRONT_LOSS_THRESHOLD}) from front-tier starting grid (P1-P4) over at least {GRID_TIER_MIN_SAMPLE_SIZE} starts.",
+        metric="avg_position_delta",
+        min_sample_size=GRID_TIER_MIN_SAMPLE_SIZE,
+        thresholds={"loss_threshold": GRID_TIER_FRONT_LOSS_THRESHOLD},
+    ),
+    RULE_GRID_TIER_POSITION_GAIN: RuleDefinition(
+        rule_id=RULE_GRID_TIER_POSITION_GAIN,
+        category=InsightCategory.POSITION_CHANGE,
+        description=f"Driver achieved significant average position gain (avg delta >= {GRID_TIER_LOWER_GAIN_THRESHOLD}) from lower-tier starting grid (P11-P20) over at least {GRID_TIER_MIN_SAMPLE_SIZE} starts.",
+        metric="avg_position_delta",
+        min_sample_size=GRID_TIER_MIN_SAMPLE_SIZE,
+        thresholds={"gain_threshold": GRID_TIER_LOWER_GAIN_THRESHOLD},
+    ),
+    RULE_TOP10_CONVERSION_HIGH: RuleDefinition(
+        rule_id=RULE_TOP10_CONVERSION_HIGH,
+        category=InsightCategory.POSITION_CHANGE,
+        description=f"Driver achieved high top-10 points conversion rate (>= {TOP10_CONVERSION_HIGH_THRESHOLD}%) from top-10 starting grid positions across at least {TOP10_CONVERSION_MIN_SAMPLE_SIZE} starts.",
+        metric="top10_conversion_rate",
+        min_sample_size=TOP10_CONVERSION_MIN_SAMPLE_SIZE,
+        thresholds={"conversion_threshold": TOP10_CONVERSION_HIGH_THRESHOLD},
     ),
 }
 
