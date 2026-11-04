@@ -176,6 +176,19 @@ This document defines every analytical metric used by the platform. Each metric 
 | **Source Fields** | `race_results.points` |
 | **Edge Cases** | Constructor with 0 total points → undefined (display as N/A). |
 
+### 2.5 Grand Prix Reliability and Attrition
+
+| Property | Value |
+|----------|-------|
+| **Name** | Grand Prix Attrition Summary |
+| **Definition** | Event-entry counts for starts, classified finishes, source-recorded retirements (DNFs), DNS, DSQ, and other unknown non-classifications. |
+| **Formula** | `DNF rate = dnf_results / actual_starts * 100`; `non-classification rate = (dnf_results + dsq_results + unknown_non_classified) / actual_starts * 100`. |
+| **Source Fields** | `race_results.position_text`, `race_results.status`, `race_results.source_position`, `race_results.grid_position`, `race_results.constructor_id`. |
+| **Scope** | Per driver, constructor, round, and fixed R1–8 / R9–16 / R17–24 phases. Grand Prix only; sprint outcomes are not combined. |
+| **Classification** | DNS when source status is `Did not start` or position text is `W`/`DNS`; DNF when status is `Retired` or position text is `R`; DSQ when status is `Disqualified` or position text is `D`; classified when none of those apply (including `Lapped` and `+N Lap` statuses). Any remaining non-classified entry is `UNKNOWN_NON_CLASSIFIED`. |
+| **Edge Cases** | DNS is excluded from starts and all start-based denominators. DSQ is a start but never a DNF or mechanical failure. A numeric source position does not override a `Retired` status. Classified lapped finishes are classified, even when fewer than winner laps. Rate is `None` for zero starts. |
+| **Limitation** | The 2024 imported GP retirement status is generic `Retired`; it does not support deterministic mechanical, collision, spin, or driver-error subclasses. No causal failure attribution is made. |
+
 ---
 
 ## 3. Race-Level Metrics
